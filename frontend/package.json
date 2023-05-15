@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "@types/react-wow": "^1.0.1",
     "prettier": "2.8.8",
     "react-router-dom": "^6.11.1"

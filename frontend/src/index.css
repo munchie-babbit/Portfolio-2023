@@ -1,52 +1,55 @@
 @font-face {
-  font-family: 'sanshiro';
-  src: url('fonts/sanshiro-black-webfont.woff2') format('woff2'),
-       url('fonts/sanshiro-black-webfont.woff') format('woff');
+  font-family: "sanshiro";
+  src: url("fonts/sanshiro-black-webfont.woff2") format("woff2"),
+    url("fonts/sanshiro-black-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'mermaid';
-  src: url('fonts/mermaid1001-webfont.woff2') format('woff2'),
-       url('fonts/mermaid1001-webfont.woff') format('woff');
+  font-family: "mermaid";
+  src: url("fonts/mermaid1001-webfont.woff2") format("woff2"),
+    url("fonts/mermaid1001-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'mermaid swash';
-  src: url('fonts/mermaid_swash_caps-webfont.woff2') format('woff2'),
-       url('fonts/mermaid_swash_caps-webfont.woff') format('woff');
+  font-family: "mermaid swash";
+  src: url("fonts/mermaid_swash_caps-webfont.woff2") format("woff2"),
+    url("fonts/mermaid_swash_caps-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap");
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
-  font-family: "mermaid" ;
+  font-family: "sanshiro";
   font-size: 60px;
+  color: "#ED6A40";
 }
 
 h2 {
-  font-family: "sanshiro" ;
-  font-size: 60px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 24px;
 }
 
 h3 {
-  font-family: "mermaid" ;
-  font-size: 36px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+p {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 16px;
 }
