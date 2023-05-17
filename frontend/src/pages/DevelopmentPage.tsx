@@ -18,6 +18,7 @@ import instagram from "../images/dev/Instagram.png";
 import neutral from "../images/dev/Neutral.png";
 import projects from "../images/dev/Projects.png";
 import workExperience from "../images/dev/Work Experience.png";
+import twitter from "../images/dev/Birds.png";
 
 const colors = {
   lightOrange: "#FEE6D6",
@@ -399,7 +400,7 @@ const DevelopmentPage = () => {
             primaryBtnLink=""
             bgColor={colors.darkBlue}
             textColor={colors.midOrange}
-            featuredImage=""
+            featuredImage={twitter}
             positionText="right"
           ></FeaturedCard>
           <FeaturedCard
