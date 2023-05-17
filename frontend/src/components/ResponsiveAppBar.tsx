@@ -1,15 +1,22 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+
 import Menu, { MenuProps } from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
+
+import {
+  Container,
+  Box,
+  Fade,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  MenuItem,
+  Button,
+  useTheme,
+} from "@mui/material";
+
 import logo from "../images/logo-white.png";
 import { styled, alpha } from "@mui/material/styles";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -133,7 +140,7 @@ function ResponsiveAppBar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
+          {/* <Typography
             variant="h6"
             noWrap
             component="a"
@@ -146,8 +153,9 @@ function ResponsiveAppBar() {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
-            }}
-          >
+            }} */}
+          {/* > */}
+          <Fade in={true}>
             <Box
               sx={{
                 height: 40,
@@ -216,7 +224,8 @@ function ResponsiveAppBar() {
                 </MenuItem>
               </StyledMenu>
             </Box>
-          </Typography>
+          </Fade>
+          {/* </Typography> */}
           {/* menu collapsed*/}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton

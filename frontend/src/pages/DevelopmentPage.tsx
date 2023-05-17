@@ -1,9 +1,23 @@
+import * as React from "react";
 import Footer from "../components/Footer";
 import FeaturedCard from "../components/FeaturedCard";
-import { Container, Grid, LinearProgress, ListItem, List } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import {
+  Container,
+  Grid,
+  LinearProgress,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  List,
+  Box,
+  Slide,
+} from "@mui/material";
 import desk from "../images/dev/Desk.png";
 import instagram from "../images/dev/Instagram.png";
+import neutral from "../images/dev/Neutral.png";
+import projects from "../images/dev/Projects.png";
+import workExperience from "../images/dev/Work Experience.png";
 
 const colors = {
   lightOrange: "#FEE6D6",
@@ -20,6 +34,7 @@ const TitleCard = ({
   positionText,
   bgColor,
   textColor,
+  descTextColor,
 }: {
   header: string;
   desc: string;
@@ -27,6 +42,7 @@ const TitleCard = ({
   positionText: string;
   bgColor: string;
   textColor: string;
+  descTextColor: string;
 }) => {
   if (positionText == "left") {
     return (
@@ -34,24 +50,35 @@ const TitleCard = ({
         container
         sx={{
           backgroundColor: bgColor,
-          borderRadius: 8,
+          borderRadius: 4,
           height: 200,
           paddingLeft: 12,
           display: "flex",
-          alignItems: "center",
+          overflow: "hidden",
+          justifyContent: "flex-end",
+          width: "100%",
           img: {
             width: 400,
-            bottom: 0,
-            right: 0,
+            maxWidth: "80%",
+          },
+          p: {
+            color: descTextColor,
           },
         }}
         xs={12}
       >
-        <Grid item md={6}>
+        <Grid
+          item
+          md={6}
+          xs={12}
+          sx={{
+            paddingTop: 5,
+          }}
+        >
           <h2 style={{ color: textColor }}>{header}</h2>
-          <p style={{ color: colors.darkBlue }}>{desc}</p>
+          <p>{desc}</p>
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <img src={titleImg}></img>
         </Grid>
       </Grid>
@@ -62,25 +89,37 @@ const TitleCard = ({
         container
         sx={{
           backgroundColor: bgColor,
-          borderRadius: 8,
+          borderRadius: 4,
           height: 200,
-          paddingLeft: 12,
+          paddingLeft: 4,
           display: "flex",
-          alignItems: "center",
+          // alignItems: "center",
+          overflow: "hidden",
           img: {
             width: 400,
             bottom: 0,
             right: 0,
+            maxWidth: "80%",
+          },
+          p: {
+            color: descTextColor,
           },
         }}
         xs={12}
       >
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <img src={titleImg}></img>
         </Grid>
-        <Grid item md={6}>
+        <Grid
+          item
+          md={6}
+          xs={12}
+          sx={{
+            paddingTop: 5,
+          }}
+        >
           <h2 style={{ color: textColor }}>{header}</h2>
-          <p style={{ color: colors.darkBlue }}>{desc}</p>
+          <p>{desc}</p>
         </Grid>
       </Grid>
     );
@@ -89,55 +128,86 @@ const TitleCard = ({
 
 const SkillsBar = ({ skill, value }: { skill: string; value: number }) => {
   return (
-    <Grid container>
-      <Grid item xs={2}>
+    <Grid container sx={{ display: "inline-block" }}>
+      <Grid item xs={12}>
         <p>{skill}</p>
       </Grid>
-      <Grid item xs={8}>
-        <LinearProgress variant="determinate" value={value}></LinearProgress>
+      <Grid item xs={12}>
+        <LinearProgress
+          color="secondary"
+          // secondary={colors.midOrange}
+          variant="determinate"
+          value={value}
+          sx={{
+            height: 10,
+            borderRadius: 2,
+          }}
+        ></LinearProgress>
       </Grid>
     </Grid>
   );
 };
 
-const Technology = styled(Grid)(({ theme }) => ({
-  backgroundColor: "#ED6A40",
-  borderRadius: 4,
-  paddingLeft: 4,
-  paddingRight: 4,
-  textAlign: "center",
-  color: "white",
-}));
+const Technology = ({ name }: { name: string }) => {
+  return (
+    <Box
+      sx={{
+        backgroundColor: "#ED6A40",
+        borderRadius: 1,
+        paddingLeft: 2,
+        paddingRight: 2,
+        paddingTop: 0.1,
+        paddingBottom: 0.1,
+        margin: 0.5,
+        textAlign: "center",
+        color: "white",
+      }}
+    >
+      <p>{name}</p>
+    </Box>
+  );
+};
 
 const DevelopmentPage = () => {
+  const splashRef = React.useRef(null);
+
   return (
     <Container>
       <Grid
         container
+        ref={splashRef}
         sx={{
-          marginTop: 12,
+          marginTop: 8,
         }}
       >
-        <Grid item xs={12} md={8}>
-          <h2 style={{ color: colors.darkOrange }}>Hi, I'm Estelle!</h2>
-          <h1 style={{ color: colors.darkOrange }}>
-            I like to build creative solutions to complex problems.
-          </h1>
-          <p style={{ color: colors.darkBlue }}>
-            I’m a Fullstack Developer who is always up for a challenge! As a
-            former Product Designer at Shopify, I’m a problem solver who is
-            enthusiastic about human-centric design and usability. Currently I’m
-            working at Citylitics, focused on improving city infrastructure and
-            the daily lives for individuals throughout North America.
-          </p>
-        </Grid>
+        <Slide
+          direction="up"
+          in={true}
+          timeout={500}
+          container={splashRef.current}
+        >
+          <Grid item xs={12} md={8}>
+            <h2 style={{ color: colors.darkOrange }}>Hi, I'm Estelle!</h2>
+            <h1 style={{ color: colors.darkOrange }}>
+              I like to build creative solutions to complex problems.
+            </h1>
+            <p style={{ color: colors.darkBlue }}>
+              I’m a Fullstack Developer who is always up for a challenge! As a
+              former Product Designer at Shopify, I’m a problem solver who is
+              enthusiastic about human-centric design and usability. Currently
+              I’m working at Citylitics, focused on improving city
+              infrastructure and the daily lives for individuals throughout
+              North America.
+            </p>
+          </Grid>
+        </Slide>
         <Grid
           container
-          rowSpacing={2}
+          spacing={4}
           xs={12}
           color={colors.darkBlue}
           sx={{
-            marginTop: 16,
+            marginTop: 12,
           }}
         >
           <TitleCard
@@ -147,111 +217,170 @@ const DevelopmentPage = () => {
             positionText="left"
             bgColor={colors.lightOrange}
             textColor={colors.purple}
+            descTextColor={colors.darkBlue}
           ></TitleCard>
-          <Grid
-            container
-            item
-            xs={12}
-            md={3}
-            sx={{
-              marginRight: 2,
-              marginTop: 2,
-              backgroundColor: colors.lightOrange,
-              borderRadius: 4,
-            }}
-          >
-            <h2>Languages</h2>
-            <SkillsBar skill="Javascript/Typescript" value={80}></SkillsBar>
-            <SkillsBar skill="Java" value={90}></SkillsBar>
-            <SkillsBar skill="Python" value={80}></SkillsBar>
-            <SkillsBar skill="C/C++" value={70}></SkillsBar>
-            <SkillsBar skill="C#" value={60}></SkillsBar>
+          <Grid item xs={12} md={4}>
+            <Box
+              sx={{
+                padding: 4,
+                backgroundColor: colors.lightOrange,
+                borderRadius: 4,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <h2>Languages</h2>
+              <Box>
+                <SkillsBar skill="Javascript/Typescript" value={80}></SkillsBar>
+                <SkillsBar skill="Java" value={90}></SkillsBar>
+                <SkillsBar skill="Python" value={80}></SkillsBar>
+                <SkillsBar skill="C/C++" value={70}></SkillsBar>
+                <SkillsBar skill="C#" value={60}></SkillsBar>
+              </Box>
+            </Box>
           </Grid>
-          <Grid
-            container
-            sx={{
-              marginRight: 2,
-              marginTop: 2,
-              backgroundColor: colors.lightOrange,
-              borderRadius: 4,
-            }}
-            xs={12}
-            md={8}
-          >
-            <Grid item xs={12}>
-              <h2>Skills & technologies</h2>
-            </Grid>
-            <Technology>React</Technology>
-            <Technology>Django</Technology>
-            <Technology>GCP</Technology>
-            <Technology>Git</Technology>
-            <Technology>CI/CD</Technology>
-            <Technology>API Design</Technology>
-            <Technology>Unity 3D & Blender</Technology>
-            <Technology>Docker</Technology>
-            <Technology>K8</Technology>
+          <Grid item xs={12} md={8}>
+            <Box
+              sx={{
+                backgroundColor: colors.lightOrange,
+                borderRadius: 4,
+                padding: 4,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Grid item xs={12}>
+                <h2>Skills & technologies</h2>
+              </Grid>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                }}
+              >
+                <Technology name="React" />
+                <Technology name="Django" />
+                <Technology name="Google Cloud Platform" />
+                <Technology name="Git Version Control" />
+                <Technology name="CI/CD" />
+                <Technology name="API Design" />
+                <Technology name="Unity 3D & Blender" />
+                <Technology name="Docker" />
+                <Technology name="Kubernetes" />
+                <Technology name="react-query" />
+                <Technology name="redux" />
+                <Technology name="Object Oriented Design" />
+                <Technology name="react-testing-library" />
+                <Technology name="Frontend testing" />
+                <Technology name="Behaviour Driven Development" />
+                <Technology name="Software Architechture & Design" />
+                <Technology name="Software Design Patterns" />
+                <Technology name="Solid Design Principles" />
+              </Box>
+            </Box>
           </Grid>
-          <Grid
-            container
-            sx={{
-              marginRight: 2,
-              marginTop: 2,
-              backgroundColor: colors.lightOrange,
-              borderRadius: 4,
-            }}
-            xs={12}
-            md={8}
-          >
-            <Grid item xs={12}>
-              <h2>Education</h2>
-              <p>Major in Computer Science, University of Western Ontario</p>
-              <h3>With relavent coursework in:</h3>
-              <List>
-                <ListItem>Data Structures & Algorithms</ListItem>
-                <ListItem>Software Engineering</ListItem>
-                <ListItem>Introduction to Artificial Intelligence</ListItem>
-              </List>
-            </Grid>
+          <Grid item xs={12} md={8}>
+            <Box
+              sx={{
+                backgroundColor: colors.lightOrange,
+                borderRadius: 4,
+                padding: 4,
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Grid item xs={12}>
+                <h2>Education</h2>
+                <p>Major in Computer Science, University of Western Ontario</p>
+                <h3>With relavent coursework in:</h3>
+                <List>
+                  <ListItem disablePadding>
+                    <ListItemIcon>
+                      <KeyboardDoubleArrowRightIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Data Structures & Algorithms" />
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemIcon>
+                      <KeyboardDoubleArrowRightIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Software Engineering" />
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemIcon>
+                      <KeyboardDoubleArrowRightIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Introduction to Artificial Intelligence" />
+                  </ListItem>
+                </List>
+              </Grid>
+            </Box>
           </Grid>
-          <Grid
-            container
-            sx={{
-              marginRight: 2,
-              marginTop: 2,
-              backgroundColor: colors.lightOrange,
-              borderRadius: 4,
-            }}
-            xs={12}
-            md={3}
-          >
-            <Grid item xs={12}>
-              <h2>Currently working on</h2>
-              <List>
-                <ListItem>Experimenting with the ChatGPT API</ListItem>
-                <ListItem>Improving code readability and cleanliness</ListItem>
-                <ListItem>Mastering VIM</ListItem>
-              </List>
-            </Grid>
+          <Grid item xs={12} md={4}>
+            <Box
+              sx={{
+                backgroundColor: colors.lightOrange,
+                borderRadius: 4,
+                padding: 4,
+              }}
+            >
+              <Grid item xs={12}>
+                <h2>Currently working on</h2>
+                <List>
+                  <ListItem disablePadding>
+                    <ListItemIcon>
+                      <KeyboardDoubleArrowRightIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Experimenting with the ChatGPT API" />
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemIcon>
+                      <KeyboardDoubleArrowRightIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Improving code readability and cleanliness" />
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemIcon>
+                      <KeyboardDoubleArrowRightIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Mastering VIM" />
+                  </ListItem>
+                </List>
+              </Grid>
+            </Box>
           </Grid>
         </Grid>
-        <Grid container>
+
+        <Grid
+          container
+          sx={{
+            marginTop: 16,
+          }}
+        >
           <TitleCard
             header="Work experience"
             desc="Where I've built up my skillset over the years"
-            titleImg={desk}
+            titleImg={workExperience}
             positionText="right"
             bgColor={colors.lightOrange}
             textColor={colors.darkOrange}
+            descTextColor={colors.darkBlue}
           ></TitleCard>
         </Grid>
-        <Grid container>
+        <Grid
+          container
+          sx={{
+            marginTop: 16,
+          }}
+        >
           <TitleCard
             header="Projects"
             desc="Things I've built with my fingers (but not toes)."
-            titleImg={desk}
+            titleImg={projects}
             positionText="left"
             bgColor={colors.darkBlue}
             textColor={colors.lightOrange}
+            descTextColor="white"
           ></TitleCard>
           <FeaturedCard
             header="Intelligent Instagram Bot"
@@ -274,13 +403,13 @@ const DevelopmentPage = () => {
             positionText="right"
           ></FeaturedCard>
           <FeaturedCard
-            header="Neutral MVP"
+            header="Green Tech Startup Incubated At Mozilla Builders"
             desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
             primaryBtn="View Product"
             primaryBtnLink=""
             bgColor={colors.darkBlue}
             textColor={colors.darkOrange}
-            featuredImage=""
+            featuredImage={neutral}
             positionText="left"
           ></FeaturedCard>
         </Grid>
