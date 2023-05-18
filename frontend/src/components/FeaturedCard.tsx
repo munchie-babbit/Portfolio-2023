@@ -38,27 +38,41 @@ const FeaturedCard = ({
           padding: 12,
           alignItems: "center",
           img: {
-            width: 400,
-            bottom: 0,
-            right: 0,
-          },
-          Button: {
-            backgroundColor: textColor,
-            color: bgColor,
-            paddingTop: 2,
-            paddingBottom: 2,
-            paddingLeft: 4,
-            paddingRight: 4,
-            fontFamily: "IBM Plex Mono",
+            width: "100%",
+            borderRadius: 4,
           },
         }}
       >
-        <Grid item md={7}>
+        <Grid
+          item
+          md={7}
+          sx={{
+            paddingRight: 4,
+          }}
+        >
           <h2>{header}</h2>
           <p>{desc}</p>
-          <Button href={primaryBtnLink}>{primaryBtn}</Button>
+          <Button
+            variant="contained"
+            disableElevation
+            sx={{
+              marginTop: 2,
+              backgroundColor: textColor,
+              color: bgColor,
+              paddingTop: 2,
+              paddingBottom: 2,
+              paddingLeft: 4,
+              paddingRight: 4,
+              fontFamily: "IBM Plex Mono",
+            }}
+            href={primaryBtnLink}
+          >
+            {primaryBtn}
+          </Button>
           {secondaryBtn && (
-            <Button href={secondaryBtnLink}>{secondaryBtn}</Button>
+            <Button variant="contained" href={secondaryBtnLink}>
+              {secondaryBtn}
+            </Button>
           )}
         </Grid>
         <Grid item md={5}>
@@ -79,9 +93,7 @@ const FeaturedCard = ({
           display: "flex",
           alignItems: "center",
           img: {
-            width: 400,
-            bottom: 0,
-            right: 0,
+            width: "100%",
           },
           Button: {
             backgroundColor: textColor,
@@ -97,12 +109,39 @@ const FeaturedCard = ({
         <Grid item md={5}>
           <img src={featuredImage}></img>
         </Grid>
-        <Grid item md={7}>
+        <Grid
+          item
+          md={7}
+          sx={{
+            paddingLeft: 6,
+          }}
+        >
           <h2>{header}</h2>
           <p>{desc}</p>
-          <Button href={primaryBtnLink}>{primaryBtn}</Button>
+          <Button
+            sx={{
+              backgroundColor: textColor,
+              color: bgColor,
+              paddingTop: 2,
+              paddingBottom: 2,
+              paddingLeft: 4,
+              paddingRight: 4,
+              fontFamily: "IBM Plex Mono",
+            }}
+            disableElevation
+            variant="contained"
+            href={primaryBtnLink}
+          >
+            {primaryBtn}
+          </Button>
           {secondaryBtn && (
-            <Button href={secondaryBtnLink}>{secondaryBtn}</Button>
+            <Button
+              variant="contained"
+              sx={{ marginTop: 2 }}
+              href={secondaryBtnLink}
+            >
+              {secondaryBtn}
+            </Button>
           )}
         </Grid>
       </Grid>

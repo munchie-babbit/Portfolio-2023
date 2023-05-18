@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 
 import Menu, { MenuProps } from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
+import ExpandCircleDownRoundedIcon from "@mui/icons-material/ExpandCircleDownRounded";
+import { colors } from "../styles";
 
 import {
   Container,
@@ -19,7 +21,7 @@ import {
 
 import logo from "../images/logo-white.png";
 import { styled, alpha } from "@mui/material/styles";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Outlet } from "react-router-dom";
 
 const roleMenuPages = {
@@ -102,7 +104,7 @@ function ResponsiveAppBar() {
       setCurrentRole("Artist");
       setCurrentColour(roleBackgroundColours.Artist);
       setPages(roleMenuPages.Artist);
-      setRoleTextColour("black");
+      setRoleTextColour(colors.darkBlue);
     } else {
       setCurrentRole("Developer");
       setCurrentColour(roleBackgroundColours.Developer);
@@ -136,38 +138,25 @@ function ResponsiveAppBar() {
       position="static"
       sx={{
         backgroundColor: currentColour,
+        paddingTop: 2,
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }} */}
-          {/* > */}
-          <Fade in={true}>
+          <Fade in={true} timeout={1000}>
             <Box
               sx={{
                 height: 40,
                 borderRadius: 40,
-                padding: 2,
+                padding: 4,
                 margin: 0,
                 backgroundColor: "rgba(0,129,186, 0.6)",
                 backdropFilter: "blur(10px) brightness(80%) saturate(120%)",
-                display: "flex",
+                color: "white",
                 alignItems: "center",
                 position: "fixed",
                 zIndex: "1",
+                display: { xs: "none", md: "flex" },
               }}
             >
               <LogoImage src={logo} alt="Estelle Chung"></LogoImage>
@@ -179,36 +168,81 @@ function ResponsiveAppBar() {
                 variant="contained"
                 disableElevation
                 onMouseEnter={handleHover}
-                endIcon={<KeyboardArrowDownIcon />}
+                endIcon={<ExpandCircleDownRoundedIcon />}
                 sx={{
                   backgroundColor: "rgba(0,0,0,0)",
+                  color: "white",
+                  fontFamily: "IBM Plex Mono",
+                  letterSpacing: 2,
+                  fontSize: 20,
+                  "&:hover": {
+                    backgroundColor: "transparent",
+                    textDecoration: "none",
+                  },
                 }}
               >
                 The {currentRole}
               </Button>
+              {/* TODO Remove the current role from the menu items */}
               <StyledMenu
                 id="demo-customized-menu"
                 MenuListProps={{
                   "aria-labelledby": "demo-customized-button",
                 }}
                 anchorEl={anchorEl}
-                anchorOrigin={{ vertical: "top", horizontal: "left" }}
-                // transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                 open={open}
                 onClose={handleClose}
+                autoFocus={false}
                 sx={{
                   width: "100%",
+                  marginTop: "3px",
+                  marginLeft: "-6px",
+                  overflow: "hidden",
+                  borderRadius: 20,
+
                   zIndex: 2,
-                  margin: 4,
                   "& .MuiMenu-paper": {
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    backdropFilter: "blur(10px) brightness(80%) saturate(120%)",
+                    boxShadow: "none",
+                    backgroundColor: "transparent",
                   },
                 }}
               >
-                <MenuItem onClick={handleClose} disableRipple>
-                  <Button href="/dev" onClick={() => updateRole("Developer")}>
-                    The Developer
+                <MenuItem
+                  onClick={handleClose}
+                  disableRipple
+                  sx={{
+                    height: 60,
+                    overflow: "hidden",
+                    backgroundColor: "rgba(0,129,186, 0.6)",
+                    backdropFilter: "blur(10px) brightness(80%) saturate(120%)",
+                    marginBottom: "6px",
+                    borderRadius: 40,
+                    "&:hover": {
+                      backgroundColor: colors.darkBlue,
+                      textDecoration: "none",
+                    },
+                    "&:active": {
+                      backgroundColor: colors.darkBlue,
+                      textDecoration: "none",
+                    },
+                  }}
+                >
+                  <Button
+                    href="/dev"
+                    disableRipple
+                    disableFocusRipple
+                    onClick={() => updateRole("Developer")}
+                  >
+                    <p
+                      style={{
+                        // color: colors.darkBlue,
+                        letterSpacing: 2,
+                        fontSize: 20,
+                      }}
+                    >
+                      The Developer
+                    </p>
                   </Button>
                 </MenuItem>
                 {/* <MenuItem onClick={handleClose} disableRipple>
@@ -217,9 +251,36 @@ function ResponsiveAppBar() {
                   </Button>
 
                   </MenuItem> */}
-                <MenuItem onClick={handleClose} disableRipple>
-                  <Button href="/art" onClick={() => updateRole("Artist")}>
-                    The Artist
+                <MenuItem
+                  onClick={handleClose}
+                  disableRipple
+                  sx={{
+                    height: 60,
+                    overflow: "hidden",
+                    backgroundColor: "rgba(0,129,186, 0.6)",
+                    backdropFilter: "blur(10px) brightness(80%) saturate(120%)",
+                    borderRadius: 40,
+                    "&:hover": {
+                      backgroundColor: colors.darkBlue,
+                      textDecoration: "none",
+                    },
+                  }}
+                >
+                  <Button
+                    disableRipple
+                    disableFocusRipple
+                    href="/art"
+                    onClick={() => updateRole("Artist")}
+                  >
+                    <p
+                      style={{
+                        // color: colors.darkBlue,
+                        letterSpacing: 2,
+                        fontSize: 20,
+                      }}
+                    >
+                      The Artist
+                    </p>
                   </Button>
                 </MenuItem>
               </StyledMenu>
@@ -259,7 +320,7 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <p style={{ textAlign: "center" }}>{page}</p>
                 </MenuItem>
               ))}
             </Menu>
@@ -288,7 +349,7 @@ function ResponsiveAppBar() {
               flexGrow: 1,
               justifyContent: "flex-end",
               display: { xs: "none", md: "flex" },
-              maxWidth: "md",
+              maxWidth: "lg",
             }}
           >
             {pages.map((page) => (
@@ -297,7 +358,7 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: roleTextColour, display: "block" }}
               >
-                {page}
+                <p>{page}</p>
               </Button>
             ))}
           </Box>

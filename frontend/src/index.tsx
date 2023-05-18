@@ -22,7 +22,7 @@ const theme = createTheme({
   },
   transitions: {
     duration: {
-      enteringScreen: 500,
+      enteringScreen: 600,
       leavingScreen: 200,
     },
   },

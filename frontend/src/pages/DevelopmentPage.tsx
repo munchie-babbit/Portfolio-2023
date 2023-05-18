@@ -19,14 +19,7 @@ import neutral from "../images/dev/Neutral.png";
 import projects from "../images/dev/Projects.png";
 import workExperience from "../images/dev/Work Experience.png";
 import twitter from "../images/dev/Birds.png";
-
-const colors = {
-  lightOrange: "#FEE6D6",
-  darkBlue: "#1F263C",
-  midOrange: "#F5A872",
-  darkOrange: "#ED6A40",
-  purple: "#C49ABE",
-};
+import { colors } from "../styles";
 
 const TitleCard = ({
   header,

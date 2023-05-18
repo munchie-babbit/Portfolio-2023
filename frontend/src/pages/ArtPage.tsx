@@ -18,6 +18,7 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import * as React from "react";
 import Footer from "../components/Footer";
 import FeaturedCard from "../components/FeaturedCard";
+import { colors } from "../styles";
 
 import img1 from "../images/art/3D Render.png";
 import img2 from "../images/art/Angelina.jpg";
@@ -70,7 +71,7 @@ const itemData = [
     title: "Image",
   },
   {
-    img: img6,
+    img: img14,
     title: "Image",
   },
   {
@@ -86,10 +87,6 @@ const itemData = [
     title: "Image",
   },
   {
-    img: img10,
-    title: "Image",
-  },
-  {
     img: img11,
     title: "Image",
   },
@@ -102,7 +99,7 @@ const itemData = [
     title: "Image",
   },
   {
-    img: img14,
+    img: img6,
     title: "Image",
   },
   {
@@ -219,7 +216,7 @@ const ArtPage = () => {
   return (
     <Container>
       <Grid
-        item
+        container
         sx={{
           height: 600,
           overflow: "hidden",
@@ -231,157 +228,171 @@ const ArtPage = () => {
       >
         <img src={video} style={styles.image} />
       </Grid>
-      <Container maxWidth="md">
-        <Grid
-          container
-          spacing={2}
-          sx={{
-            columnGap: 8,
-            paddingTop: 12,
-          }}
-        >
-          <Grid xs={12} md={6}>
-            <Item>
-              <Box
-                component="img"
-                sx={{
-                  width: 1,
-                  borderRadius: 8,
-                }}
-                alt="Estelle growing up"
-                src={img10}
-              />
-              <h3>I'm an artist with a passion for creativity.</h3>
-              <Divider></Divider>
-              <p>{artistBio}</p>
-              <List>
-                <ListSubheader disableSticky>
-                  <p>Cool Projects I've Contributed To</p>
-                </ListSubheader>
-                <ListItem>
-                  <ArrowRightIcon></ArrowRightIcon>
-                  <p>
-                    I spray painted a mural in downtown toronto to rise up
-                    against Asian-American hate
-                  </p>
-                </ListItem>
-                <ListItem>
-                  <ArrowRightIcon></ArrowRightIcon>
-                  <p>
-                    I worked alongside Facing History and Ourselves to design
-                    materials to raise awareness about Decolonizing Schools
-                  </p>
-                </ListItem>
-                <ListItem>
-                  <ArrowRightIcon></ArrowRightIcon>
-                  <p>
-                    I led the design of a mural used in the protest to protect
-                    Old Growth trees in Briish Columbia
-                  </p>
-                </ListItem>
-              </List>
-            </Item>
-          </Grid>
-          <Grid xs={12} md={5}>
-            <Item>
-              <List sx={{ width: "100%" }}>
-                <ListSubheader disableSticky>
-                  <h1>Artistic Collaborations & Features</h1>
-                </ListSubheader>
-                {items.map((item, index) => (
-                  <React.Fragment key={index}>
-                    <ListItem alignItems="flex-start">
-                      <ListItemAvatar>
-                        <Avatar
-                          sx={{ bgcolor: item.color }}
-                          alt={item.primary}
-                          src={item.avatarSrc}
-                        />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={item.primary}
-                        secondary={
-                          <React.Fragment>
-                            <Typography
-                              sx={{ display: "inline" }}
-                              component="span"
-                              variant="body2"
-                              color="text.primary"
-                            >
-                              {item.secondary}
-                            </Typography>
-                          </React.Fragment>
-                        }
-                      />
-                    </ListItem>
-                    {index < items.length - 1 && (
-                      <Divider variant="inset" component="li" />
-                    )}
-                  </React.Fragment>
-                ))}
-              </List>
-            </Item>
-          </Grid>
-        </Grid>
-        <ImageList cols={5} gap={24}>
-          {artStyles.map((item) => (
-            <ImageListItem key={item.img}>
-              <img
-                src={`${item.img}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.title}
-                loading="lazy"
-                style={styles.round}
-              />
-              <ImageListItemBar
-                title={item.title}
-                position="below"
-                style={styles.grey}
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
-        <Box
-          sx={{
-            color: "black",
-            textAlign: "center",
-            paddingTop: 12,
-          }}
-        >
-          <h2>All Work</h2>
-        </Box>
-        <ImageList variant="masonry" cols={4} gap={8}>
-          {itemData.map((item) => (
-            <ImageListItem key={item.img} sx={{}}>
-              <img
-                src={`${item.img}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.title}
-                loading="lazy"
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
-        <Grid>
+
+      <Grid
+        container
+        sx={{
+          paddingTop: 12,
+        }}
+      >
+        <Grid item xs={12} md={4}>
           <Box
+            component="img"
             sx={{
-              color: "white",
-              backgroundColor: "rgba(0,129,186, 0.6)",
-              borderRadius: 12,
-              textAlign: "center",
-              marginTop: 12,
-              paddingTop: 4,
-              paddingBottom: 4,
+              width: 1,
+              borderRadius: 8,
             }}
-          >
-            <h3>Let's Collaborate!</h3>
-            <h4> Get in touch for your next project</h4>
-            <p>Lorem ipsum</p>
-            <Button>Contact</Button>
-          </Box>
+            alt="Estelle growing up"
+            src={img10}
+          />
+          <h3>I'm an artist with a passion for creativity.</h3>
+          <Divider></Divider>
+          <p>{artistBio}</p>
+          {/* <List>
+            <ListSubheader disableSticky>
+              <p>Cool Projects I've Contributed To</p>
+            </ListSubheader>
+            <ListItem>
+              <ArrowRightIcon></ArrowRightIcon>
+              <p>
+                I spray painted a mural in downtown toronto to rise up against
+                Asian-American hate
+              </p>
+            </ListItem>
+            <ListItem>
+              <ArrowRightIcon></ArrowRightIcon>
+              <p>
+                I worked alongside Facing History and Ourselves to design
+                materials to raise awareness about Decolonizing Schools
+              </p>
+            </ListItem>
+            <ListItem>
+              <ArrowRightIcon></ArrowRightIcon>
+              <p>
+                I led the design of a mural used in the protest to protect Old
+                Growth trees in Briish Columbia
+              </p>
+            </ListItem>
+          </List> */}
         </Grid>
-        <Footer textColor="black" iconColor="black"></Footer>
-      </Container>
+        <Grid item xs={12} md={8} sx={{ paddingLeft: 12 }}>
+          <List sx={{ width: "100%" }}>
+            <ListSubheader disableSticky>
+              <h1>Artistic Collaborations & Features</h1>
+            </ListSubheader>
+            {items.map((item, index) => (
+              <React.Fragment key={index}>
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar
+                      sx={{ bgcolor: item.color }}
+                      alt={item.primary}
+                      src={item.avatarSrc}
+                    />
+                  </ListItemAvatar>
+                  <ListItemText>
+                    <p>{item.primary}</p>
+                  </ListItemText>
+                  <ListItemText>
+                    <p>{item.secondary}</p>
+                  </ListItemText>
+                  {/* <ListItemText
+                    primary={item.primary}
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          {item.secondary}
+                        </Typography>
+                      </React.Fragment>
+                    }
+                  /> */}
+                </ListItem>
+                {index < items.length - 1 && (
+                  <Divider variant="inset" component="li" />
+                )}
+              </React.Fragment>
+            ))}
+          </List>
+        </Grid>
+      </Grid>
+      <ImageList cols={5} gap={24} sx={{ marginTop: 12 }}>
+        {artStyles.map((item) => (
+          <ImageListItem key={item.img}>
+            <img
+              src={`${item.img}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              alt={item.title}
+              loading="lazy"
+              style={styles.round}
+            />
+            <ImageListItemBar
+              title={item.title}
+              position="below"
+              sx={{
+                color: colors.darkOrange,
+                fontFamily: "IBM Plex Mono",
+                textAlign: "center",
+              }}
+              // style={styles.grey}
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+      <Box
+        sx={{
+          color: colors.darkBlue,
+          textAlign: "center",
+          paddingTop: 12,
+        }}
+      >
+        <h1>Featured Work</h1>
+      </Box>
+      <ImageList variant="masonry" cols={4} gap={8}>
+        {itemData.map((item) => (
+          <ImageListItem key={item.img} sx={{}}>
+            <img
+              src={`${item.img}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              alt={item.title}
+              loading="lazy"
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+      <Grid item sx={{ marginTop: 12 }}>
+        <FeaturedCard
+          header="Get in touch :-)"
+          desc="Interested in working with me on a project? Send an email and we can start chatting! I've working with clients from all walks of life and in all phases in their journeys. No project is too big or too small."
+          primaryBtn="Send me an email"
+          primaryBtnLink="mailto:estellechung333@gmail.com"
+          bgColor={colors.blue}
+          textColor="white"
+          featuredImage={saru}
+          positionText="left"
+        ></FeaturedCard>
+        {/* <Box
+          sx={{
+            color: "white",
+            backgroundColor: "rgba(0,129,186, 0.6)",
+            borderRadius: 12,
+            textAlign: "center",
+            marginTop: 12,
+            paddingTop: 4,
+            paddingBottom: 4,
+          }}
+        >
+          <h3>Let's Collaborate!</h3>
+          <h4> Get in touch for your next project</h4>
+          <p>Lorem ipsum</p>
+          <Button>Contact</Button>
+        </Box> */}
+      </Grid>
+      <Footer textColor="black" iconColor="black"></Footer>
     </Container>
   );
 };
