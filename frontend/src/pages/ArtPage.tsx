@@ -1,24 +1,29 @@
-import ImageList from "@mui/material/ImageList";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import ImageListItem from "@mui/material/ImageListItem";
-import { styled, alpha } from "@mui/material/styles";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListSubheader from "@mui/material/ListSubheader";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import * as React from "react";
+import { useRef, useEffect } from "react";
+import {
+  styled,
+  alpha,
+  Slide,
+  Box,
+  Button,
+  Container,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  ListSubheader,
+  Typography,
+  Avatar,
+} from "@mui/material";
+import { colors } from "../styles";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Footer from "../components/Footer";
 import FeaturedCard from "../components/FeaturedCard";
-import { colors } from "../styles";
 
 import img1 from "../images/art/3D Render.png";
 import img2 from "../images/art/Angelina.jpg";
@@ -203,7 +208,10 @@ const styles = {
 };
 
 const artistBio =
-  "Lorem isum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  "I'm passionate about the power of communication through art. It's not just about what you say, but what others hear. Art is a simple yet profound way to convey complex thoughts and ideas. \n\n" +
+  "For over 10 years, I've immersed myself in the world of art as a painter, graphic designer, comic artist, and illustrator. I've collaborated with individuals from all over the globe on impactful projects. From working alongside Facing History and Ourselves to raise awareness about decolonizing schools, to leading the design of a mural for the protection of Old Growth trees in British Columbia, and even spray painting a mural in downtown Toronto to stand against Asian-American hate.\n\n" +
+  "Through art, I've found a powerful voice that transcends boundaries and speaks to the heart of important issues. Let's create something meaningful together!";
+
 const Item = styled(Box)(({ theme }) => ({
   // backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -235,82 +243,48 @@ const ArtPage = () => {
           paddingTop: 12,
         }}
       >
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={5}>
           <Box
             component="img"
             sx={{
               width: 1,
               borderRadius: 8,
+              marginTop: 4,
             }}
             alt="Estelle growing up"
             src={img10}
           />
-          <h3>I'm an artist with a passion for creativity.</h3>
-          <Divider></Divider>
-          <p>{artistBio}</p>
-          {/* <List>
-            <ListSubheader disableSticky>
-              <p>Cool Projects I've Contributed To</p>
-            </ListSubheader>
-            <ListItem>
-              <ArrowRightIcon></ArrowRightIcon>
-              <p>
-                I spray painted a mural in downtown toronto to rise up against
-                Asian-American hate
-              </p>
-            </ListItem>
-            <ListItem>
-              <ArrowRightIcon></ArrowRightIcon>
-              <p>
-                I worked alongside Facing History and Ourselves to design
-                materials to raise awareness about Decolonizing Schools
-              </p>
-            </ListItem>
-            <ListItem>
-              <ArrowRightIcon></ArrowRightIcon>
-              <p>
-                I led the design of a mural used in the protest to protect Old
-                Growth trees in Briish Columbia
-              </p>
-            </ListItem>
-          </List> */}
+          <h2 id="overview" style={{ color: colors.darkOrange, marginTop: 40 }}>
+            Hi I'm Estelle!
+          </h2>
+          <p style={{ whiteSpace: "pre-line" }}>{artistBio}</p>
         </Grid>
-        <Grid item xs={12} md={8} sx={{ paddingLeft: 12 }}>
-          <List sx={{ width: "100%" }}>
+        <Grid item xs={12} md={7} sx={{ paddingLeft: 12 }}>
+          <List>
             <ListSubheader disableSticky>
-              <h1>Artistic Collaborations & Features</h1>
+              <h1 style={{ color: colors.darkOrange }}>
+                {" "}
+                Artistic Collaborations & Features
+              </h1>
             </ListSubheader>
             {items.map((item, index) => (
               <React.Fragment key={index}>
                 <ListItem alignItems="flex-start">
-                  <ListItemAvatar>
+                  <ListItemAvatar sx={{ my: "auto" }}>
                     <Avatar
                       sx={{ bgcolor: item.color }}
                       alt={item.primary}
                       src={item.avatarSrc}
                     />
                   </ListItemAvatar>
-                  <ListItemText>
-                    <p>{item.primary}</p>
+                  <ListItemText
+                    sx={{ width: "10%", my: "auto", paddingRight: 4 }}
+                  >
+                    <p style={{ fontWeight: "bold" }}>{item.primary}</p>
                   </ListItemText>
-                  <ListItemText>
+                  <ListItemText sx={{ width: "50%" }}>
                     <p>{item.secondary}</p>
                   </ListItemText>
-                  {/* <ListItemText
-                    primary={item.primary}
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          {item.secondary}
-                        </Typography>
-                      </React.Fragment>
-                    }
-                  /> */}
                 </ListItem>
                 {index < items.length - 1 && (
                   <Divider variant="inset" component="li" />
@@ -338,7 +312,6 @@ const ArtPage = () => {
                 fontFamily: "IBM Plex Mono",
                 textAlign: "center",
               }}
-              // style={styles.grey}
             />
           </ImageListItem>
         ))}
@@ -350,7 +323,7 @@ const ArtPage = () => {
           paddingTop: 12,
         }}
       >
-        <h1>Featured Work</h1>
+        <h1 id="featured-work">Featured Work</h1>
       </Box>
       <ImageList variant="masonry" cols={4} gap={8}>
         {itemData.map((item) => (
@@ -364,7 +337,7 @@ const ArtPage = () => {
           </ImageListItem>
         ))}
       </ImageList>
-      <Grid item sx={{ marginTop: 12 }}>
+      <Grid item id="hire-me" sx={{ marginTop: 12 }}>
         <FeaturedCard
           header="Get in touch :-)"
           desc="Interested in working with me on a project? Send an email and we can start chatting! I've working with clients from all walks of life and in all phases in their journeys. No project is too big or too small."
@@ -392,7 +365,10 @@ const ArtPage = () => {
           <Button>Contact</Button>
         </Box> */}
       </Grid>
-      <Footer textColor="black" iconColor="black"></Footer>
+      <Footer
+        textColor={colors.darkOrange}
+        iconColor={colors.darkOrange}
+      ></Footer>
     </Container>
   );
 };

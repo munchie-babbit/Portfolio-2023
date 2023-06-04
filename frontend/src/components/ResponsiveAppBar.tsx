@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import Menu, { MenuProps } from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandCircleDownRoundedIcon from "@mui/icons-material/ExpandCircleDownRounded";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
+import Brightness2Icon from "@mui/icons-material/Brightness2";
+import Brightness3Icon from "@mui/icons-material/Brightness3";
 import { colors } from "../styles";
 
 import {
@@ -25,14 +28,26 @@ import { styled, alpha } from "@mui/material/styles";
 import { Outlet } from "react-router-dom";
 
 const roleMenuPages = {
-  Developer: ["Intro", "Projects", "Resume"],
-  Designer: ["Case studies", "UX mentorship", "Contact"],
-  Artist: ["Overview", " Work", "Hire me"],
+  Developer: [
+    { title: "Intro", link: "https://dummylink.com" },
+    { title: "Projects", link: "https://dummylink.com" },
+    { title: "Resume", link: "https://dummylink.com" },
+  ],
+  Designer: [
+    { title: "Case studies", link: "https://dummylink.com" },
+    { title: "UX mentorship", link: "https://dummylink.com" },
+    { title: "Contact", link: "https://dummylink.com" },
+  ],
+  Artist: [
+    { title: "Overview", link: "#overview" },
+    { title: "Work", link: "#featured-work" },
+    { title: "Hire me", link: "#hire-me" },
+  ],
 };
 const roleBackgroundColours = {
-  Developer: "#FFF9F0",
+  Developer: "#030816",
   Designer: "#0f1014",
-  Artist: "#FFF9F0",
+  Artist: "white",
 };
 
 const LogoImage = styled("img")({
@@ -85,7 +100,7 @@ const StyledMenu = styled((props: MenuProps) => (
 function ResponsiveAppBar() {
   //Get current page
   const [currentRole, setCurrentRole] = useState("");
-  const [pages, setPages] = useState([""]);
+  const [pages, setPages] = useState([{ title: "", link: "" }]);
   const [currentColour, setCurrentColour] = useState("");
   const [roleTextColour, setRoleTextColour] = useState("");
   const updateRole = (role: string) => {
@@ -96,20 +111,20 @@ function ResponsiveAppBar() {
 
   useEffect(() => {
     if (currentPath === "/design") {
-      setCurrentRole("Product Designer");
+      setCurrentRole("The Product Designer");
       setCurrentColour(roleBackgroundColours.Designer);
       setPages(roleMenuPages.Designer);
       setRoleTextColour("white");
     } else if (currentPath === "/art") {
-      setCurrentRole("Artist");
+      setCurrentRole("The Artist");
       setCurrentColour(roleBackgroundColours.Artist);
       setPages(roleMenuPages.Artist);
       setRoleTextColour(colors.darkBlue);
     } else {
-      setCurrentRole("Developer");
+      setCurrentRole("The Developer");
       setCurrentColour(roleBackgroundColours.Developer);
       setPages(roleMenuPages.Developer);
-      setRoleTextColour("#1F263C");
+      setRoleTextColour(colors.midBlue);
     }
   }, [currentPath]);
 
@@ -125,13 +140,30 @@ function ResponsiveAppBar() {
   };
   // Developer, designer dropdown
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const open = Boolean(anchorEl);
   const handleHover = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+    setIsCollapsed(false);
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setIsCollapsed(true);
   };
+
+  const [currentScrollPos, setCurrentScrollPos] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const newScrollPos = window.pageYOffset;
+      setIsCollapsed((currentScrollOPost) => newScrollPos > currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <AppBar
@@ -141,7 +173,7 @@ function ResponsiveAppBar() {
         paddingTop: 2,
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Fade in={true} timeout={1000}>
             <Box
@@ -150,9 +182,10 @@ function ResponsiveAppBar() {
                 borderRadius: 40,
                 padding: 4,
                 margin: 0,
-                backgroundColor: "rgba(0,129,186, 0.6)",
+                backgroundColor: isCollapsed
+                  ? "rgba(0,129,186, 0.2)"
+                  : "rgba(0,129,186, 0.6)",
                 backdropFilter: "blur(10px) brightness(80%) saturate(120%)",
-                color: "white",
                 alignItems: "center",
                 position: "fixed",
                 zIndex: "1",
@@ -181,7 +214,7 @@ function ResponsiveAppBar() {
                   },
                 }}
               >
-                The {currentRole}
+                {isCollapsed ? null : currentRole}
               </Button>
               {/* TODO Remove the current role from the menu items */}
               <StyledMenu
@@ -208,81 +241,86 @@ function ResponsiveAppBar() {
                   },
                 }}
               >
-                <MenuItem
-                  onClick={handleClose}
-                  disableRipple
-                  sx={{
-                    height: 60,
-                    overflow: "hidden",
-                    backgroundColor: "rgba(0,129,186, 0.6)",
-                    backdropFilter: "blur(10px) brightness(80%) saturate(120%)",
-                    marginBottom: "6px",
-                    borderRadius: 40,
-                    "&:hover": {
-                      backgroundColor: colors.darkBlue,
-                      textDecoration: "none",
-                    },
-                    "&:active": {
-                      backgroundColor: colors.darkBlue,
-                      textDecoration: "none",
-                    },
-                  }}
-                >
-                  <Button
-                    href="/dev"
-                    disableRipple
-                    disableFocusRipple
-                    onClick={() => updateRole("Developer")}
-                  >
-                    <p
-                      style={{
-                        // color: colors.darkBlue,
-                        letterSpacing: 2,
-                        fontSize: 20,
+                {currentRole === "The Developer" ? (
+                  <div>
+                    <MenuItem
+                      onClick={handleClose}
+                      disableRipple
+                      sx={{
+                        height: 60,
+                        overflow: "hidden",
+                        backgroundColor: "rgba(0,129,186, 0.6)",
+                        backdropFilter:
+                          "blur(10px) brightness(80%) saturate(120%)",
+                        borderRadius: 40,
+                        "&:hover": {
+                          backgroundColor: colors.darkBlue,
+                          textDecoration: "none",
+                        },
                       }}
                     >
-                      The Developer
-                    </p>
-                  </Button>
-                </MenuItem>
-                {/* <MenuItem onClick={handleClose} disableRipple>
-                  <Button href="/design" onClick={()=>updateRole("Product Designer")}>
-                    The Product Designer
-                  </Button>
-
-                  </MenuItem> */}
-                <MenuItem
-                  onClick={handleClose}
-                  disableRipple
-                  sx={{
-                    height: 60,
-                    overflow: "hidden",
-                    backgroundColor: "rgba(0,129,186, 0.6)",
-                    backdropFilter: "blur(10px) brightness(80%) saturate(120%)",
-                    borderRadius: 40,
-                    "&:hover": {
-                      backgroundColor: colors.darkBlue,
-                      textDecoration: "none",
-                    },
-                  }}
-                >
-                  <Button
-                    disableRipple
-                    disableFocusRipple
-                    href="/art"
-                    onClick={() => updateRole("Artist")}
-                  >
-                    <p
-                      style={{
-                        // color: colors.darkBlue,
-                        letterSpacing: 2,
-                        fontSize: 20,
+                      <Button
+                        disableRipple
+                        disableFocusRipple
+                        disableTouchRipple
+                        href="/art"
+                        // onClick={() => updateRole("The Artist")}
+                      >
+                        <h3
+                          style={{
+                            // color: colors.darkBlue,
+                            letterSpacing: 2,
+                            fontSize: 20,
+                          }}
+                        >
+                          The Artist
+                        </h3>
+                      </Button>
+                    </MenuItem>
+                  </div>
+                ) : (
+                  <div>
+                    <MenuItem
+                      onClick={handleClose}
+                      disableRipple
+                      sx={{
+                        height: 60,
+                        overflow: "hidden",
+                        backgroundColor: "rgba(0,129,186, 0.6)",
+                        backdropFilter:
+                          "blur(10px) brightness(80%) saturate(120%)",
+                        marginBottom: "6px",
+                        borderRadius: 40,
+                        "&:hover": {
+                          backgroundColor: colors.darkBlue,
+                          textDecoration: "none",
+                        },
+                        "&:active": {
+                          backgroundColor: colors.darkBlue,
+                          textDecoration: "none",
+                        },
                       }}
                     >
-                      The Artist
-                    </p>
-                  </Button>
-                </MenuItem>
+                      <Button
+                        href="/dev"
+                        disableRipple
+                        disableFocusRipple
+                        disableTouchRipple
+                        // onClick={() => updateRole("The Developer")}
+                      >
+                        <h3
+                          style={{
+                            // color: colors.darkBlue,
+                            letterSpacing: 2,
+                            fontSize: 20,
+                          }}
+                        >
+                          The Developer
+                        </h3>
+                      </Button>
+                    </MenuItem>
+                  </div>
+                )}
               </StyledMenu>
             </Box>
           </Fade>
@@ -318,9 +356,9 @@ function ResponsiveAppBar() {
                 maxWidth: "md",
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <p style={{ textAlign: "center" }}>{page}</p>
+              {pages.map((page, index) => (
+                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                  <p style={{ textAlign: "center" }}>{page.title}</p>
                 </MenuItem>
               ))}
             </Menu>
@@ -352,13 +390,23 @@ function ResponsiveAppBar() {
               maxWidth: "lg",
             }}
           >
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
-                key={page}
+                key={index}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: roleTextColour, display: "block" }}
+                sx={{ my: 2, color: roleTextColour, px: 2 }}
+                href={page.link}
+                startIcon={
+                  index === 0 ? (
+                    <Brightness3Icon />
+                  ) : index === 1 ? (
+                    <Brightness2Icon />
+                  ) : (
+                    <Brightness1Icon />
+                  )
+                }
               >
-                <p>{page}</p>
+                <h2>{page.title}</h2>
               </Button>
             ))}
           </Box>

@@ -32,9 +32,9 @@ const Footer = ({
         <Divider></Divider>
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <h4 style={{ color: textColor }}>
+            <h3 style={{ color: textColor }}>
               @2023 Estelle Chung. All Rights Reserved.
-            </h4>
+            </h3>
           </Grid>
           <Grid item xs={12}>
             <IconButton

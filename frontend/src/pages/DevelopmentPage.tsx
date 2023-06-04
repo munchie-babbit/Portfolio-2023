@@ -1,6 +1,6 @@
 import * as React from "react";
 import Footer from "../components/Footer";
-import FeaturedCard from "../components/FeaturedCard";
+import FeaturedCard, { WorkCard } from "../components/FeaturedCard";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import {
   Container,
@@ -12,6 +12,9 @@ import {
   List,
   Box,
   Slide,
+  Tab,
+  Tabs,
+  Typography,
 } from "@mui/material";
 import desk from "../images/dev/Desk.png";
 import instagram from "../images/dev/Instagram.png";
@@ -19,7 +22,43 @@ import neutral from "../images/dev/Neutral.png";
 import projects from "../images/dev/Projects.png";
 import workExperience from "../images/dev/Work Experience.png";
 import twitter from "../images/dev/Birds.png";
+import city from "../images/dev/city.jpeg";
+import shopify from "../images/dev/shopify.png";
+import neutral2 from "../images/dev/neutral2.png";
+
 import { colors } from "../styles";
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
 
 const TitleCard = ({
   header,
@@ -54,6 +93,10 @@ const TitleCard = ({
           img: {
             width: 400,
             maxWidth: "80%",
+            opacity: {
+              md: 100,
+              xs: 0,
+            },
           },
           p: {
             color: descTextColor,
@@ -164,6 +207,11 @@ const Technology = ({ name }: { name: string }) => {
 
 const DevelopmentPage = () => {
   const splashRef = React.useRef(null);
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
 
   return (
     <Container>
@@ -180,170 +228,27 @@ const DevelopmentPage = () => {
           timeout={500}
           container={splashRef.current}
         >
-          <Grid item xs={12} md={8}>
-            <h2 style={{ color: colors.darkOrange }}>Hi, I'm Estelle!</h2>
-            <h1 style={{ color: colors.darkOrange }}>
-              I like to build creative solutions to complex problems.
-            </h1>
-            <p style={{ color: colors.darkBlue }}>
-              I’m a Fullstack Developer who is always up for a challenge! As a
-              former Product Designer at Shopify, I’m a problem solver who is
-              enthusiastic about human-centric design and usability. Currently
-              I’m working at Citylitics, focused on improving city
-              infrastructure and the daily lives for individuals throughout
-              North America.
-            </p>
+          <Grid>
+            <Grid item xs={12} md={10}>
+              <h2 style={{ color: colors.midBlue }}>Hi, I'm Estelle!</h2>
+              <h1 style={{ color: colors.darkOrange }}>
+                I embrace creativity and innovation to build impactful solutions
+                that address the important problems.
+              </h1>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              {" "}
+              <p style={{ color: colors.midBlue }}>
+                I’m a Fullstack Developer who is always up for a challenge! As a
+                former Product Designer at Shopify, I’m a problem solver who is
+                enthusiastic about human-centric design and usability. Currently
+                I’m working at Citylitics, focused on improving city
+                infrastructure and the daily lives for individuals throughout
+                North America.
+              </p>
+            </Grid>
           </Grid>
         </Slide>
-        <Grid
-          container
-          spacing={4}
-          xs={12}
-          color={colors.darkBlue}
-          sx={{
-            marginTop: 12,
-          }}
-        >
-          <TitleCard
-            header="A little overview"
-            desc="Here's an at-a-glance summary of my skills as a developer."
-            titleImg={desk}
-            positionText="left"
-            bgColor={colors.lightOrange}
-            textColor={colors.purple}
-            descTextColor={colors.darkBlue}
-          ></TitleCard>
-          <Grid item xs={12} md={4}>
-            <Box
-              sx={{
-                padding: 4,
-                backgroundColor: colors.lightOrange,
-                borderRadius: 4,
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <h2>Languages</h2>
-              <Box>
-                <SkillsBar skill="Javascript/Typescript" value={80}></SkillsBar>
-                <SkillsBar skill="Java" value={90}></SkillsBar>
-                <SkillsBar skill="Python" value={80}></SkillsBar>
-                <SkillsBar skill="C/C++" value={70}></SkillsBar>
-                <SkillsBar skill="C#" value={60}></SkillsBar>
-              </Box>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={8}>
-            <Box
-              sx={{
-                backgroundColor: colors.lightOrange,
-                borderRadius: 4,
-                padding: 4,
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <Grid item xs={12}>
-                <h2>Skills & technologies</h2>
-              </Grid>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                }}
-              >
-                <Technology name="React" />
-                <Technology name="Django" />
-                <Technology name="Google Cloud Platform" />
-                <Technology name="Git Version Control" />
-                <Technology name="CI/CD" />
-                <Technology name="API Design" />
-                <Technology name="Unity 3D & Blender" />
-                <Technology name="Docker" />
-                <Technology name="Kubernetes" />
-                <Technology name="react-query" />
-                <Technology name="redux" />
-                <Technology name="Object Oriented Design" />
-                <Technology name="react-testing-library" />
-                <Technology name="Frontend testing" />
-                <Technology name="Behaviour Driven Development" />
-                <Technology name="Software Architechture & Design" />
-                <Technology name="Software Design Patterns" />
-                <Technology name="Solid Design Principles" />
-              </Box>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={8}>
-            <Box
-              sx={{
-                backgroundColor: colors.lightOrange,
-                borderRadius: 4,
-                padding: 4,
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <Grid item xs={12}>
-                <h2>Education</h2>
-                <p>Major in Computer Science, University of Western Ontario</p>
-                <h3>With relavent coursework in:</h3>
-                <List>
-                  <ListItem disablePadding>
-                    <ListItemIcon>
-                      <KeyboardDoubleArrowRightIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Data Structures & Algorithms" />
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemIcon>
-                      <KeyboardDoubleArrowRightIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Software Engineering" />
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemIcon>
-                      <KeyboardDoubleArrowRightIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Introduction to Artificial Intelligence" />
-                  </ListItem>
-                </List>
-              </Grid>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box
-              sx={{
-                backgroundColor: colors.lightOrange,
-                borderRadius: 4,
-                padding: 4,
-              }}
-            >
-              <Grid item xs={12}>
-                <h2>Currently working on</h2>
-                <List>
-                  <ListItem disablePadding>
-                    <ListItemIcon>
-                      <KeyboardDoubleArrowRightIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Experimenting with the ChatGPT API" />
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemIcon>
-                      <KeyboardDoubleArrowRightIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Improving code readability and cleanliness" />
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemIcon>
-                      <KeyboardDoubleArrowRightIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Mastering VIM" />
-                  </ListItem>
-                </List>
-              </Grid>
-            </Box>
-          </Grid>
-        </Grid>
 
         <Grid
           container
@@ -351,22 +256,106 @@ const DevelopmentPage = () => {
             marginTop: 16,
           }}
         >
-          <TitleCard
-            header="Work experience"
-            desc="Where I've built up my skillset over the years"
-            titleImg={workExperience}
-            positionText="right"
-            bgColor={colors.lightOrange}
-            textColor={colors.darkOrange}
-            descTextColor={colors.darkBlue}
-          ></TitleCard>
-        </Grid>
-        <Grid
-          container
-          sx={{
-            marginTop: 16,
-          }}
-        >
+          <Grid item sx={{ marginBottom: 12 }}>
+            <Grid
+              container
+              sx={{
+                backgroundColor: colors.darkBlue,
+                borderRadius: 4,
+                height: 200,
+                paddingLeft: 4,
+                display: "flex",
+                overflow: "hidden",
+                img: {
+                  width: 400,
+                  bottom: 0,
+                  right: 0,
+                  maxWidth: "80%",
+                },
+                p: {
+                  color: colors.midBlue,
+                },
+              }}
+              xs={12}
+            >
+              <Grid item md={6} xs={12}>
+                <img src={workExperience}></img>
+              </Grid>
+              <Grid
+                item
+                md={6}
+                xs={12}
+                sx={{
+                  paddingTop: 5,
+                }}
+              >
+                <h2 style={{ color: colors.white }}>Work Experience</h2>
+                <Box>
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="basic tabs example"
+                  >
+                    <Tab label="Citylitics" {...a11yProps(0)} />
+                    <Tab label="Shopify" {...a11yProps(1)} />
+                    <Tab label="Neutral" {...a11yProps(2)} />
+                    <Tab label="Western University" {...a11yProps(3)} />
+                  </Tabs>
+                </Box>
+              </Grid>
+            </Grid>
+            <Box sx={{ width: "100%" }}>
+              <TabPanel value={value} index={0}>
+                <WorkCard
+                  header="How can we leverage the power of tech to improve city infrastructure?"
+                  desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
+                  primaryBtn="In Progress"
+                  primaryBtnLink=""
+                  bgColor={colors.darkBlue}
+                  textColor={colors.white}
+                  featuredImage={city}
+                  positionText="left"
+                ></WorkCard>
+              </TabPanel>
+              <TabPanel value={value} index={1}>
+                <WorkCard
+                  header="How can we make the important easy and everything else possible for Shopify merchants?"
+                  desc="fsfs"
+                  primaryBtn="In Progress"
+                  primaryBtnLink=""
+                  bgColor={colors.darkBlue}
+                  textColor={colors.white}
+                  featuredImage={shopify}
+                  positionText="left"
+                ></WorkCard>
+              </TabPanel>
+              <TabPanel value={value} index={2}>
+                <WorkCard
+                  header="Green Tech Startup Incubated At Mozilla Builders"
+                  desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
+                  primaryBtn="View Product"
+                  primaryBtnLink=""
+                  bgColor={colors.darkBlue}
+                  textColor={colors.white}
+                  featuredImage={neutral2}
+                  positionText="left"
+                ></WorkCard>
+              </TabPanel>
+              <TabPanel value={value} index={3}>
+                <WorkCard
+                  header="Western University"
+                  desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
+                  primaryBtn="View Product"
+                  primaryBtnLink=""
+                  bgColor={colors.darkBlue}
+                  textColor={colors.white}
+                  featuredImage={neutral2}
+                  positionText="left"
+                ></WorkCard>
+              </TabPanel>
+            </Box>
+          </Grid>
+
           <TitleCard
             header="Projects"
             desc="Things I've built with my fingers (but not toes)."

@@ -33,23 +33,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body::-webkit-scrollbar {
+  width: 0rem;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
 h1 {
   font-family: "sanshiro";
   font-size: 60px;
   color: "#ED6A40";
+  letter-spacing: "30px";
 }
 
 h2 {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 h3 {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 p {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
+  color: "#1F263C";
+}
+
+html {
+  scroll-behavior: smooth;
 }

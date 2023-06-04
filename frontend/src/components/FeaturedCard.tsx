@@ -1,5 +1,94 @@
 import { Card, Grid, Container, Button } from "@mui/material";
 
+export const WorkCard = ({
+  header,
+  desc,
+  primaryBtn,
+  primaryBtnLink,
+  secondaryBtn,
+  secondaryBtnLink,
+  bgColor,
+  textColor,
+  featuredImage,
+  logo,
+  skills,
+  date,
+}: {
+  header: string;
+  desc: string;
+  primaryBtn: string;
+  primaryBtnLink: string;
+  secondaryBtn?: string;
+  secondaryBtnLink?: string;
+  bgColor: string;
+  textColor: string;
+  featuredImage: string;
+  logo: string;
+  skills: [];
+  date: string;
+}) => {
+  return (
+    <Grid
+      container
+      sx={{
+        backgroundColor: bgColor,
+        color: textColor,
+        height: "auto",
+        minHeight: 500,
+        borderRadius: 4,
+        display: "flex",
+        marginTop: 4,
+        marginBottom: 4,
+        padding: 12,
+        alignItems: "center",
+        img: {
+          maxWidth: "100%",
+          borderRadius: 4,
+          paddingTop: {
+            xs: 4,
+            md: 0,
+          },
+        },
+      }}
+    >
+      <Grid
+        item
+        md={7}
+        sx={{
+          paddingRight: 4,
+        }}
+      >
+        <h2>{header}</h2>
+        <p>{desc}</p>
+        <Button
+          variant="contained"
+          disableElevation
+          sx={{
+            marginTop: 2,
+            backgroundColor: textColor,
+            color: bgColor,
+            paddingTop: 2,
+            paddingBottom: 2,
+            paddingLeft: 4,
+            paddingRight: 4,
+            fontFamily: "IBM Plex Mono",
+          }}
+          href={primaryBtnLink}
+        >
+          {primaryBtn}
+        </Button>
+        {secondaryBtn && (
+          <Button variant="contained" href={secondaryBtnLink}>
+            {secondaryBtn}
+          </Button>
+        )}
+      </Grid>
+      <Grid item md={5}>
+        <img src={featuredImage}></img>
+      </Grid>
+    </Grid>
+  );
+};
 const FeaturedCard = ({
   header,
   desc,
@@ -30,7 +119,8 @@ const FeaturedCard = ({
         sx={{
           backgroundColor: bgColor,
           color: textColor,
-          height: 500,
+          height: "auto",
+          minHeight: 500,
           borderRadius: 4,
           display: "flex",
           marginTop: 4,
@@ -38,8 +128,12 @@ const FeaturedCard = ({
           padding: 12,
           alignItems: "center",
           img: {
-            width: "100%",
+            maxWidth: "100%",
             borderRadius: 4,
+            paddingTop: {
+              xs: 4,
+              md: 0,
+            },
           },
         }}
       >
@@ -87,13 +181,18 @@ const FeaturedCard = ({
         sx={{
           backgroundColor: bgColor,
           color: textColor,
-          height: 500,
+          minHeight: 500,
+          height: "auto",
           borderRadius: 4,
           padding: 12,
           display: "flex",
           alignItems: "center",
           img: {
-            width: "100%",
+            maxWidth: "100%",
+            paddingTop: {
+              xs: 4,
+              md: 0,
+            },
           },
           Button: {
             backgroundColor: textColor,
