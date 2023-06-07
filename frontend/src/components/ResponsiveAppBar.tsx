@@ -29,9 +29,12 @@ import { Outlet } from "react-router-dom";
 
 const roleMenuPages = {
   Developer: [
-    { title: "Intro", link: "https://dummylink.com" },
-    { title: "Projects", link: "https://dummylink.com" },
-    { title: "Resume", link: "https://dummylink.com" },
+    { title: "Intro", link: "#intro" },
+    { title: "Projects", link: "#projects" },
+    {
+      title: "Resume",
+      link: "https://drive.google.com/file/d/1d13E9CcL1_GLdI0I5EqDhPSjmG0DEzIZ/view?usp=sharing",
+    },
   ],
   Designer: [
     { title: "Case studies", link: "https://dummylink.com" },
@@ -205,7 +208,6 @@ function ResponsiveAppBar() {
                 sx={{
                   backgroundColor: "rgba(0,0,0,0)",
                   color: "white",
-                  fontFamily: "IBM Plex Mono",
                   letterSpacing: 2,
                   fontSize: 20,
                   "&:hover": {
@@ -214,9 +216,8 @@ function ResponsiveAppBar() {
                   },
                 }}
               >
-                {isCollapsed ? null : currentRole}
+                <h2>{isCollapsed ? null : currentRole} </h2>
               </Button>
-              {/* TODO Remove the current role from the menu items */}
               <StyledMenu
                 id="demo-customized-menu"
                 MenuListProps={{
@@ -229,11 +230,9 @@ function ResponsiveAppBar() {
                 autoFocus={false}
                 sx={{
                   width: "100%",
-                  marginTop: "3px",
                   marginLeft: "-6px",
                   overflow: "hidden",
                   borderRadius: 20,
-
                   zIndex: 2,
                   "& .MuiMenu-paper": {
                     boxShadow: "none",
@@ -248,6 +247,7 @@ function ResponsiveAppBar() {
                       disableRipple
                       sx={{
                         height: 60,
+                        alignItems: "center",
                         overflow: "hidden",
                         backgroundColor: "rgba(0,129,186, 0.6)",
                         backdropFilter:
@@ -264,9 +264,14 @@ function ResponsiveAppBar() {
                         disableFocusRipple
                         disableTouchRipple
                         href="/art"
-                        // onClick={() => updateRole("The Artist")}
+                        sx={{
+                          backgroundColor: "transparent",
+                          "&.MuiButtonBase-root:hover": {
+                            bgcolor: "transparent",
+                          },
+                        }}
                       >
-                        <h3
+                        <h2
                           style={{
                             // color: colors.darkBlue,
                             letterSpacing: 2,
@@ -274,7 +279,7 @@ function ResponsiveAppBar() {
                           }}
                         >
                           The Artist
-                        </h3>
+                        </h2>
                       </Button>
                     </MenuItem>
                   </div>
@@ -306,9 +311,14 @@ function ResponsiveAppBar() {
                         disableRipple
                         disableFocusRipple
                         disableTouchRipple
-                        // onClick={() => updateRole("The Developer")}
+                        sx={{
+                          backgroundColor: "transparent",
+                          "&.MuiButtonBase-root:hover": {
+                            bgcolor: "transparent",
+                          },
+                        }}
                       >
-                        <h3
+                        <h2
                           style={{
                             // color: colors.darkBlue,
                             letterSpacing: 2,
@@ -316,7 +326,7 @@ function ResponsiveAppBar() {
                           }}
                         >
                           The Developer
-                        </h3>
+                        </h2>
                       </Button>
                     </MenuItem>
                   </div>
@@ -394,15 +404,27 @@ function ResponsiveAppBar() {
               <Button
                 key={index}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: roleTextColour, px: 2 }}
+                sx={{
+                  my: 2,
+                  color: roleTextColour,
+                  px: 2,
+                  backgroundColor: "transparent",
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                    color: colors.darkOrange,
+                  },
+                }}
+                disableFocusRipple
+                disableRipple
+                disableTouchRipple
                 href={page.link}
                 startIcon={
                   index === 0 ? (
-                    <Brightness3Icon />
+                    <Brightness3Icon sx={{ color: colors.darkOrange }} />
                   ) : index === 1 ? (
-                    <Brightness2Icon />
+                    <Brightness2Icon sx={{ color: colors.darkOrange }} />
                   ) : (
-                    <Brightness1Icon />
+                    <Brightness1Icon sx={{ color: colors.darkOrange }} />
                   )
                 }
               >

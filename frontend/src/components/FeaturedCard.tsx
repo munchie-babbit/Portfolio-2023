@@ -130,21 +130,24 @@ const FeaturedCard = ({
           }}
         >
           <h2>{header}</h2>
-          <p>{desc}</p>
+          <p style={{ color: colors.white }}>{desc}</p>
           <Button
-            variant="contained"
+            variant="outlined"
             disableElevation
             sx={{
               marginTop: 2,
-              backgroundColor: textColor,
-              color: bgColor,
+              color: textColor,
               paddingTop: 2,
               paddingBottom: 2,
               paddingLeft: 4,
               paddingRight: 4,
-              fontFamily: "IBM Plex Mono",
+              "&:hover": {
+                backgroundColor: textColor,
+                color: bgColor,
+              },
             }}
             href={primaryBtnLink}
+            target="_blank"
           >
             {primaryBtn}
           </Button>
@@ -186,7 +189,6 @@ const FeaturedCard = ({
             paddingBottom: 2,
             paddingLeft: 4,
             paddingRight: 4,
-            fontFamily: "IBM Plex Mono",
           },
         }}
       >
@@ -201,20 +203,23 @@ const FeaturedCard = ({
           }}
         >
           <h2>{header}</h2>
-          <p>{desc}</p>
+          <p style={{ color: colors.white }}>{desc}</p>
           <Button
             sx={{
-              backgroundColor: textColor,
-              color: bgColor,
+              color: textColor,
               paddingTop: 2,
               paddingBottom: 2,
               paddingLeft: 4,
               paddingRight: 4,
-              fontFamily: "IBM Plex Mono",
+              "&:hover": {
+                backgroundColor: textColor,
+                color: bgColor,
+              },
             }}
             disableElevation
-            variant="contained"
+            variant="outlined"
             href={primaryBtnLink}
+            target="_blank"
           >
             {primaryBtn}
           </Button>

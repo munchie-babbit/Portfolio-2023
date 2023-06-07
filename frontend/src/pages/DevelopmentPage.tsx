@@ -23,7 +23,7 @@ import {
   Link,
   Divider,
 } from "@mui/material";
-import desk from "../images/dev/Desk.png";
+import desk from "../images/dev/Untitled_Artwork 18.png";
 import instagram from "../images/dev/Instagram.png";
 import neutral from "../images/dev/Neutral.png";
 import projects from "../images/dev/Projects.png";
@@ -37,7 +37,7 @@ import comic from "../images/dev/Untitled_Artwork 132.png";
 import dots from "../images/dev/Untitled_Artwork 119.png";
 import splashimg from "../images/dev/splash.gif";
 import aboutme from "../images/dev/Untitled_Artwork 11.png";
-import profilepic from "../images/dev/Untitled_Artwork 14.png";
+import profilepic from "../images/dev/Untitled_Artwork 17.png";
 
 import { colors } from "../styles";
 import zIndex from "@mui/material/styles/zIndex";
@@ -180,7 +180,7 @@ const SkillsBar = ({ skill, value }: { skill: string; value: number }) => {
   return (
     <Grid container sx={{ display: "inline-block" }}>
       <Grid item xs={12}>
-        <p>{skill}</p>
+        <p style={{ color: colors.white, fontWeight: "bold" }}>{skill}</p>
       </Grid>
       <Grid item xs={12}>
         <LinearProgress
@@ -202,7 +202,12 @@ const Technology = ({ name }: { name: string }) => {
   return (
     <Box
       sx={{
-        backgroundColor: "#ED6A40",
+        backgroundColor:
+          name[0] > "m"
+            ? colors.darkOrange
+            : name[0] > "O"
+            ? colors.purple
+            : colors.blue,
         borderRadius: 1,
         paddingLeft: 2,
         paddingRight: 2,
@@ -210,10 +215,10 @@ const Technology = ({ name }: { name: string }) => {
         paddingBottom: 0.1,
         margin: 0.5,
         textAlign: "center",
-        color: "white",
+        color: name[0] > "O" ? colors.darkBlue : colors.white,
       }}
     >
-      <p>{name}</p>
+      <p style={{ fontWeight: "bold" }}>{name}</p>
     </Box>
   );
 };
@@ -244,7 +249,7 @@ const DevelopmentPage = () => {
         >
           <Grid container alignItems="center">
             <Grid item xs={12} md={7}>
-              <h2 style={{ color: colors.midBlue }}>Hi, I'm Estelle!</h2>
+              <h2 style={{ color: colors.midOrange }}>HI, I'M ESTELLE!</h2>
               <h1 style={{ color: colors.darkOrange }}>
                 I embrace creativity and innovation to build impactful solutions
                 that address the important problems.
@@ -286,7 +291,12 @@ const DevelopmentPage = () => {
           </Grid>
         </Slide>
         <Fade in={true} timeout={500}>
-          <Grid container md={12} sx={{ marginTop: 20 }}>
+          <Grid
+            container
+            md={12}
+            sx={{ marginTop: 20 }}
+            justifyContent="center"
+          >
             <Grid item>
               <Box
                 sx={{
@@ -334,47 +344,31 @@ const DevelopmentPage = () => {
                     width: "70%",
                     zIndex: 2,
                     position: "relative",
-                    marginTop: -400,
+                    marginTop: "-20vh",
                   }}
                   src={comic}
                 />
               </Grid>
-            ) : (
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  width: "100%",
-                  position: "relative",
-                  top: "-160px",
-                  left: "-40px",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  endIcon={<ArrowCircleDownIcon />}
-                  sx={{
-                    backgroundColor: colors.darkOrange,
-                    color: colors.darkBlue,
-                  }}
-                  onClick={() =>
-                    setComicIsShowing(comicIsShowing ? false : true)
-                  }
-                >
-                  <p>Show About Me</p>
-                </Button>
-              </Box>
-            )}
+            ) : null}
 
-            <Grid item sx={{ margin: "auto" }}>
+            <Grid
+              container
+              justifyContent="center"
+              sx={{ margin: "auto", width: "100%" }}
+            >
               <svg
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 500 500"
-                width="30vw"
+                width="80vw"
                 id="blobSvg"
                 filter="blur(20px)"
-                style={{ opacity: 0.7, position: "absolute", marginTop: -200 }}
+                style={{
+                  opacity: 0.7,
+                  position: "absolute",
+                  maxWidth: "1000px",
+                  marginTop: "-30vh",
+                }}
                 transform="rotate(-99)"
               >
                 {" "}
@@ -401,7 +395,7 @@ const DevelopmentPage = () => {
                 <path id="blob" fill="url(#gradient)" style={{ opacity: 0.1 }}>
                   <animate
                     attributeName="d"
-                    dur="7000ms"
+                    dur="5000ms"
                     repeatCount="indefinite"
                     values="M385.47259,309.13613Q368.27225,368.27225,309.13613,425.14983Q250,482.02741,183.02911,432.9846Q116.05821,383.94179,100.85787,316.97089Q85.65753,250,111.11302,193.28426Q136.56852,136.56852,193.28426,70.4846Q250,4.40068,303.89298,73.30736Q357.78596,142.21404,380.22944,196.10702Q402.67293,250,385.47259,309.13613Z;M405.0078,325.44624Q400.89248,400.89248,325.44624,434.97549Q250,469.0585,165.42535,444.1039Q80.8507,419.1493,84.75627,334.57465Q88.66184,250,94.44262,175.1117Q100.2234,100.2234,175.1117,82.29749Q250,64.37159,306.73538,100.45042Q363.47075,136.52925,386.29693,193.26462Q409.12312,250,405.0078,325.44624Z;M395.5,320Q390,390,320,400Q250,410,172,408Q94,406,59,328Q24,250,70.5,183.5Q117,117,183.5,108Q250,99,335,89.5Q420,80,410.5,165Q401,250,395.5,320Z;M421.63508,307.39005Q364.7801,364.7801,307.39005,427.43403Q250,490.08796,191.6822,428.36178Q133.3644,366.6356,70.9089,308.3178Q8.4534,250,54.21728,174.99058Q99.98115,99.98115,174.99058,81.49686Q250,63.01257,330.66021,75.84607Q411.32042,88.67958,444.90524,169.33979Q478.49006,250,421.63508,307.39005Z;M385.47259,309.13613Q368.27225,368.27225,309.13613,425.14983Q250,482.02741,183.02911,432.9846Q116.05821,383.94179,100.85787,316.97089Q85.65753,250,111.11302,193.28426Q136.56852,136.56852,193.28426,70.4846Q250,4.40068,303.89298,73.30736Q357.78596,142.21404,380.22944,196.10702Q402.67293,250,385.47259,309.13613Z"
                   ></animate>
@@ -409,19 +403,20 @@ const DevelopmentPage = () => {
                 <path id="blob" fill="url(#gradient)" style={{ opacity: 0.1 }}>
                   <animate
                     attributeName="d"
-                    dur="7000ms"
+                    dur="5000ms"
                     repeatCount="indefinite"
                     values="M421.63508,307.39005Q364.7801,364.7801,307.39005,427.43403Q250,490.08796,191.6822,428.36178Q133.3644,366.6356,70.9089,308.3178Q8.4534,250,54.21728,174.99058Q99.98115,99.98115,174.99058,81.49686Q250,63.01257,330.66021,75.84607Q411.32042,88.67958,444.90524,169.33979Q478.49006,250,421.63508,307.39005Z;M385.47259,309.13613Q368.27225,368.27225,309.13613,425.14983Q250,482.02741,183.02911,432.9846Q116.05821,383.94179,100.85787,316.97089Q85.65753,250,111.11302,193.28426Q136.56852,136.56852,193.28426,70.4846Q250,4.40068,303.89298,73.30736Q357.78596,142.21404,380.22944,196.10702Q402.67293,250,385.47259,309.13613Z;M449.05134,329.9003Q409.80059,409.80059,329.9003,451.15995Q250,492.5193,162.89881,458.36084Q75.79762,424.20238,65.04837,337.10119Q54.29911,250,85.74629,183.59673Q117.19347,117.19347,183.59673,88.1905Q250,59.18753,328.8549,75.73886Q407.7098,92.2902,448.00594,171.1451Q488.30208,250,449.05134,329.9003Z;M395.5,320Q390,390,320,400Q250,410,172,408Q94,406,59,328Q24,250,70.5,183.5Q117,117,183.5,108Q250,99,335,89.5Q420,80,410.5,165Q401,250,395.5,320Z;M421.63508,307.39005Q364.7801,364.7801,307.39005,427.43403Q250,490.08796,191.6822,428.36178Q133.3644,366.6356,70.9089,308.3178Q8.4534,250,54.21728,174.99058Q99.98115,99.98115,174.99058,81.49686Q250,63.01257,330.66021,75.84607Q411.32042,88.67958,444.90524,169.33979Q478.49006,250,421.63508,307.39005Z"
                   ></animate>
                 </path>
               </svg>
             </Grid>
-            <Grid item sx={{ margin: "auto" }}>
+            <Grid container justifyContent="center" sx={{ width: "100%" }}>
               <img
                 style={{
                   width: "400px",
-                  marginTop: 60,
-                  marginBottom: 60,
+                  marginTop: 100,
+                  marginBottom: 140,
+                  margin: "auto",
                   zIndex: 2,
                 }}
                 src={dots}
@@ -611,6 +606,7 @@ const DevelopmentPage = () => {
               textColor={colors.white}
               descTextColor={colors.white}
             ></TitleCard>
+            <div id="intro"></div>
             <Grid item xs={12} md={4}>
               <Box
                 sx={{
@@ -625,17 +621,22 @@ const DevelopmentPage = () => {
                   },
                 }}
               >
-                <h2>Languages</h2>
+                <h2 style={{ color: colors.white }}>Languages*</h2>
+
                 <Box>
+                  <SkillsBar skill="Python" value={100}></SkillsBar>
+                  <SkillsBar skill="Java" value={95}></SkillsBar>
+
+                  <SkillsBar skill="HTML/CSS" value={85}></SkillsBar>
                   <SkillsBar
                     skill="Javascript/Typescript"
                     value={80}
                   ></SkillsBar>
-                  <SkillsBar skill="Java" value={90}></SkillsBar>
-                  <SkillsBar skill="Python" value={80}></SkillsBar>
                   <SkillsBar skill="C/C++" value={70}></SkillsBar>
-                  <SkillsBar skill="C#" value={60}></SkillsBar>
                 </Box>
+                <p style={{ color: colors.white }}>
+                  *Based on percent of total years of experience {"(7 years)"}
+                </p>
               </Box>
             </Grid>
             <Grid item xs={12} md={8}>
@@ -649,7 +650,7 @@ const DevelopmentPage = () => {
                 }}
               >
                 <Grid item xs={12}>
-                  <h2>Skills & technologies</h2>
+                  <h2 style={{ color: colors.white }}>Skills & Technologies</h2>
                 </Grid>
                 <Box
                   sx={{
@@ -679,6 +680,7 @@ const DevelopmentPage = () => {
               </Box>
             </Grid>
           </Grid>
+
           <TitleCard
             header="Projects"
             desc="Things I've built with my fingers (but not toes)."
@@ -688,11 +690,12 @@ const DevelopmentPage = () => {
             textColor={colors.lightOrange}
             descTextColor="white"
           ></TitleCard>
+          <div id="projects"></div>
           <FeaturedCard
             header="Intelligent Instagram Bot"
-            desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
-            primaryBtn="In Progress"
-            primaryBtnLink=""
+            desc="I created a platform that empowers users to upload images onto a website and leverage ChatGPT to automatically generate captions. These generated posts can then be scheduled for publication on Instagram, liberating users from the arduous task of social media planning and management."
+            primaryBtn="See Project"
+            primaryBtnLink="https://github.com/munchie-babbit/Social-Media-Manager-AI"
             bgColor={colors.darkBlue}
             textColor={colors.purple}
             featuredImage={instagram}
@@ -700,9 +703,9 @@ const DevelopmentPage = () => {
           ></FeaturedCard>
           <FeaturedCard
             header="COVID-19 Fake News Detector"
-            desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
-            primaryBtn="See project"
-            primaryBtnLink=""
+            desc="In collaboration with a few friends, I developed a bot utilizing the Twitter API to monitor an influx of tweets. Our system detected and exposed potential instances of “fake news”, and countered them by replying with accurate data sourced from the Centers for Disease Control and Prevention — fighting the propagation of misinformation in real-time."
+            primaryBtn="See Project"
+            primaryBtnLink="https://github.com/munchie-babbit?tab=repositories"
             bgColor={colors.darkBlue}
             textColor={colors.midOrange}
             featuredImage={twitter}
@@ -710,22 +713,35 @@ const DevelopmentPage = () => {
           ></FeaturedCard>
           <FeaturedCard
             header="Green Tech Startup Incubated At Mozilla Builders"
-            desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
+            desc="I worked on the MVP for Neutral, a browser extension that allows users to shop sustainably by calculating the carbon footprint of their online purchases. Our product won the Moonshot prize at Treehacks, was a part of the Mozilla Builders Incubator and was featured on Fast Company. As a co-founder, I led the product design for Neutral, and also assisted in the frontend development."
             primaryBtn="View Product"
-            primaryBtnLink=""
+            primaryBtnLink="https://shopneutral.io/index.html"
             bgColor={colors.darkBlue}
             textColor={colors.darkOrange}
             featuredImage={neutral}
             positionText="left"
           ></FeaturedCard>
         </Grid>
-        <Button
-          variant="contained"
-          endIcon={<ArrowCircleRightIcon />}
-          sx={{ display: "flex", flex: "flex-end" }}
-        >
-          See All Projects
-        </Button>
+        <Grid container justifyContent={"end"}>
+          <Button
+            variant="contained"
+            endIcon={<ArrowCircleRightIcon />}
+            target="_blank"
+            href="https://github.com/munchie-babbit"
+            sx={{
+              color: colors.white,
+              backgroundColor: colors.darkBlue,
+              px: 4,
+              py: 2,
+              "&:hover": {
+                color: colors.darkBlue,
+                backgroundColor: colors.darkOrange,
+              },
+            }}
+          >
+            See All Projects
+          </Button>
+        </Grid>
       </Grid>
       <Footer
         textColor={colors.darkOrange}

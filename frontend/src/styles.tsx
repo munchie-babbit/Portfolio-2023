@@ -5,6 +5,6 @@ export const colors = {
   darkOrange: "#FF7C60",
   purple: "#C49ABE",
   blue: "rgba(0,129,186, 0.6)",
-  midBlue: "#6C7593",
-  white: "#FFFFFF",
+  midBlue: "#e3e1f2",
+  white: "#e3e1f2",
 };
