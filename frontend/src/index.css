@@ -43,26 +43,35 @@ body::-webkit-scrollbar-thumb {
 }
 
 h1 {
-  font-family: "sanshiro";
-  font-size: 60px;
+  font-family: "sanshiro", sans-serif;
+  font-size: 40px;
   color: "#ED6A40";
   letter-spacing: "30px";
 }
 
 h2 {
-  font-family: "IBM Plex Mono", monospace;
+  /* font-family: "IBM Plex Mono", monospace; */
+  font-family: "Inter", sans-serif;
   font-size: 20px;
 }
 
 h3 {
-  font-family: "IBM Plex Mono", monospace;
+  /* font-family: "IBM Plex Mono", monospace; */
+  font-family: "Inter", sans-serif;
   font-size: 16px;
+}
+
+h4 {
+  /* font-family: "IBM Plex Mono", monospace; */
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
 }
 
 p {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   color: "#1F263C";
+  text-transform: "none";
 }
 
 html {

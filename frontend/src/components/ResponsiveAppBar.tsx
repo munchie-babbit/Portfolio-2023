@@ -188,7 +188,7 @@ function ResponsiveAppBar() {
                 backdropFilter: "blur(10px) brightness(80%) saturate(120%)",
                 alignItems: "center",
                 position: "fixed",
-                zIndex: "1",
+                zIndex: 5,
                 display: { xs: "none", md: "flex" },
               }}
             >

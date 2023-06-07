@@ -1,7 +1,10 @@
 import * as React from "react";
+import { useState } from "react";
 import Footer from "../components/Footer";
 import FeaturedCard, { WorkCard } from "../components/FeaturedCard";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import {
   Container,
   Grid,
@@ -15,6 +18,10 @@ import {
   Tab,
   Tabs,
   Typography,
+  Fade,
+  Button,
+  Link,
+  Divider,
 } from "@mui/material";
 import desk from "../images/dev/Desk.png";
 import instagram from "../images/dev/Instagram.png";
@@ -25,8 +32,15 @@ import twitter from "../images/dev/Birds.png";
 import city from "../images/dev/city.jpeg";
 import shopify from "../images/dev/shopify.png";
 import neutral2 from "../images/dev/neutral2.png";
+import splashgif from "../images/dev/Untitled_Artwork 3.gif";
+import comic from "../images/dev/Untitled_Artwork 132.png";
+import dots from "../images/dev/Untitled_Artwork 119.png";
+import splashimg from "../images/dev/splash.gif";
+import aboutme from "../images/dev/Untitled_Artwork 11.png";
+import profilepic from "../images/dev/Untitled_Artwork 14.png";
 
 import { colors } from "../styles";
+import zIndex from "@mui/material/styles/zIndex";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -130,7 +144,6 @@ const TitleCard = ({
           height: 200,
           paddingLeft: 4,
           display: "flex",
-          // alignItems: "center",
           overflow: "hidden",
           img: {
             width: 400,
@@ -207,7 +220,8 @@ const Technology = ({ name }: { name: string }) => {
 
 const DevelopmentPage = () => {
   const splashRef = React.useRef(null);
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [comicIsShowing, setComicIsShowing] = useState(true);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -228,32 +242,199 @@ const DevelopmentPage = () => {
           timeout={500}
           container={splashRef.current}
         >
-          <Grid>
-            <Grid item xs={12} md={10}>
+          <Grid container alignItems="center">
+            <Grid item xs={12} md={7}>
               <h2 style={{ color: colors.midBlue }}>Hi, I'm Estelle!</h2>
               <h1 style={{ color: colors.darkOrange }}>
                 I embrace creativity and innovation to build impactful solutions
                 that address the important problems.
               </h1>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              {" "}
-              <p style={{ color: colors.midBlue }}>
-                I’m a Fullstack Developer who is always up for a challenge! As a
-                former Product Designer at Shopify, I’m a problem solver who is
-                enthusiastic about human-centric design and usability. Currently
-                I’m working at Citylitics, focused on improving city
-                infrastructure and the daily lives for individuals throughout
-                North America.
+              <p style={{ color: colors.midBlue, width: "70%" }}>
+                I’m a fullstack developer who is always up for a challenge! As a
+                former product designer at{" "}
+                <Link
+                  href=""
+                  target="_blank"
+                  color={colors.midBlue}
+                  sx={{ fontWeight: "bold" }}
+                >
+                  Shopify
+                </Link>
+                , I’m a problem solver who is enthusiastic about human-centric
+                design and usability. Currently I’m working at{" "}
+                <Link
+                  href=""
+                  target="_blank"
+                  color={colors.midBlue}
+                  sx={{ fontWeight: "bold" }}
+                >
+                  Citylitics
+                </Link>
+                , focused on improving city infrastructure and the daily lives
+                for individuals throughout North America.
               </p>
+            </Grid>
+            <Grid item xs={12} md={5}>
+              <img
+                style={{
+                  width: "100%",
+                  float: "right",
+                }}
+                src={splashimg}
+              />
             </Grid>
           </Grid>
         </Slide>
+        <Fade in={true} timeout={500}>
+          <Grid container md={12} sx={{ marginTop: 20 }}>
+            <Grid item>
+              <Box
+                sx={{
+                  zIndex: 2,
+                  width: 300,
+                  position: "absolute",
+                  marginTop: 8,
+                  marginLeft: 4,
+                  img: {
+                    width: 300,
+                  },
+                }}
+              >
+                <img src={aboutme} style={{}} />
+              </Box>
+              <Box
+                sx={{
+                  height: comicIsShowing ? "100%" : "700px",
+                  borderRadius: 12,
+                  overflow: "hidden",
+                }}
+              >
+                <img
+                  style={{
+                    width: "100%",
+
+                    objectFit: "cover",
+                    objectPosition: "top",
+                  }}
+                  src={splashgif}
+                />
+              </Box>
+            </Grid>
+            {comicIsShowing ? (
+              <Grid
+                item
+                sx={{
+                  margin: "auto",
+                  justifyContent: "center",
+                  display: "flex",
+                }}
+              >
+                <img
+                  style={{
+                    width: "70%",
+                    zIndex: 2,
+                    position: "relative",
+                    marginTop: -400,
+                  }}
+                  src={comic}
+                />
+              </Grid>
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  width: "100%",
+                  position: "relative",
+                  top: "-160px",
+                  left: "-40px",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  endIcon={<ArrowCircleDownIcon />}
+                  sx={{
+                    backgroundColor: colors.darkOrange,
+                    color: colors.darkBlue,
+                  }}
+                  onClick={() =>
+                    setComicIsShowing(comicIsShowing ? false : true)
+                  }
+                >
+                  <p>Show About Me</p>
+                </Button>
+              </Box>
+            )}
+
+            <Grid item sx={{ margin: "auto" }}>
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 500"
+                width="30vw"
+                id="blobSvg"
+                filter="blur(20px)"
+                style={{ opacity: 0.7, position: "absolute", marginTop: -200 }}
+                transform="rotate(-99)"
+              >
+                {" "}
+                <defs>
+                  {" "}
+                  <linearGradient
+                    id="gradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="0%"
+                    y2="100%"
+                  >
+                    {" "}
+                    <stop
+                      offset="0%"
+                      style={{ stopColor: "rgb(209, 41, 255)" }}
+                    ></stop>{" "}
+                    <stop
+                      offset="100%"
+                      style={{ stopColor: "rgb(61, 157, 230)" }}
+                    ></stop>{" "}
+                  </linearGradient>{" "}
+                </defs>{" "}
+                <path id="blob" fill="url(#gradient)" style={{ opacity: 0.1 }}>
+                  <animate
+                    attributeName="d"
+                    dur="7000ms"
+                    repeatCount="indefinite"
+                    values="M385.47259,309.13613Q368.27225,368.27225,309.13613,425.14983Q250,482.02741,183.02911,432.9846Q116.05821,383.94179,100.85787,316.97089Q85.65753,250,111.11302,193.28426Q136.56852,136.56852,193.28426,70.4846Q250,4.40068,303.89298,73.30736Q357.78596,142.21404,380.22944,196.10702Q402.67293,250,385.47259,309.13613Z;M405.0078,325.44624Q400.89248,400.89248,325.44624,434.97549Q250,469.0585,165.42535,444.1039Q80.8507,419.1493,84.75627,334.57465Q88.66184,250,94.44262,175.1117Q100.2234,100.2234,175.1117,82.29749Q250,64.37159,306.73538,100.45042Q363.47075,136.52925,386.29693,193.26462Q409.12312,250,405.0078,325.44624Z;M395.5,320Q390,390,320,400Q250,410,172,408Q94,406,59,328Q24,250,70.5,183.5Q117,117,183.5,108Q250,99,335,89.5Q420,80,410.5,165Q401,250,395.5,320Z;M421.63508,307.39005Q364.7801,364.7801,307.39005,427.43403Q250,490.08796,191.6822,428.36178Q133.3644,366.6356,70.9089,308.3178Q8.4534,250,54.21728,174.99058Q99.98115,99.98115,174.99058,81.49686Q250,63.01257,330.66021,75.84607Q411.32042,88.67958,444.90524,169.33979Q478.49006,250,421.63508,307.39005Z;M385.47259,309.13613Q368.27225,368.27225,309.13613,425.14983Q250,482.02741,183.02911,432.9846Q116.05821,383.94179,100.85787,316.97089Q85.65753,250,111.11302,193.28426Q136.56852,136.56852,193.28426,70.4846Q250,4.40068,303.89298,73.30736Q357.78596,142.21404,380.22944,196.10702Q402.67293,250,385.47259,309.13613Z"
+                  ></animate>
+                </path>
+                <path id="blob" fill="url(#gradient)" style={{ opacity: 0.1 }}>
+                  <animate
+                    attributeName="d"
+                    dur="7000ms"
+                    repeatCount="indefinite"
+                    values="M421.63508,307.39005Q364.7801,364.7801,307.39005,427.43403Q250,490.08796,191.6822,428.36178Q133.3644,366.6356,70.9089,308.3178Q8.4534,250,54.21728,174.99058Q99.98115,99.98115,174.99058,81.49686Q250,63.01257,330.66021,75.84607Q411.32042,88.67958,444.90524,169.33979Q478.49006,250,421.63508,307.39005Z;M385.47259,309.13613Q368.27225,368.27225,309.13613,425.14983Q250,482.02741,183.02911,432.9846Q116.05821,383.94179,100.85787,316.97089Q85.65753,250,111.11302,193.28426Q136.56852,136.56852,193.28426,70.4846Q250,4.40068,303.89298,73.30736Q357.78596,142.21404,380.22944,196.10702Q402.67293,250,385.47259,309.13613Z;M449.05134,329.9003Q409.80059,409.80059,329.9003,451.15995Q250,492.5193,162.89881,458.36084Q75.79762,424.20238,65.04837,337.10119Q54.29911,250,85.74629,183.59673Q117.19347,117.19347,183.59673,88.1905Q250,59.18753,328.8549,75.73886Q407.7098,92.2902,448.00594,171.1451Q488.30208,250,449.05134,329.9003Z;M395.5,320Q390,390,320,400Q250,410,172,408Q94,406,59,328Q24,250,70.5,183.5Q117,117,183.5,108Q250,99,335,89.5Q420,80,410.5,165Q401,250,395.5,320Z;M421.63508,307.39005Q364.7801,364.7801,307.39005,427.43403Q250,490.08796,191.6822,428.36178Q133.3644,366.6356,70.9089,308.3178Q8.4534,250,54.21728,174.99058Q99.98115,99.98115,174.99058,81.49686Q250,63.01257,330.66021,75.84607Q411.32042,88.67958,444.90524,169.33979Q478.49006,250,421.63508,307.39005Z"
+                  ></animate>
+                </path>
+              </svg>
+            </Grid>
+            <Grid item sx={{ margin: "auto" }}>
+              <img
+                style={{
+                  width: "400px",
+                  marginTop: 60,
+                  marginBottom: 60,
+                  zIndex: 2,
+                }}
+                src={dots}
+              />
+            </Grid>
+          </Grid>
+        </Fade>
 
         <Grid
           container
           sx={{
-            marginTop: 16,
+            marginTop: 12,
+            zIndex: 2,
           }}
         >
           <Grid item sx={{ marginBottom: 12 }}>
@@ -262,10 +443,8 @@ const DevelopmentPage = () => {
               sx={{
                 backgroundColor: colors.darkBlue,
                 borderRadius: 4,
-                height: 200,
                 paddingLeft: 4,
-                display: "flex",
-                overflow: "hidden",
+                minHeight: "700px",
                 img: {
                   width: 400,
                   bottom: 0,
@@ -278,84 +457,228 @@ const DevelopmentPage = () => {
               }}
               xs={12}
             >
-              <Grid item md={6} xs={12}>
-                <img src={workExperience}></img>
-              </Grid>
               <Grid
                 item
-                md={6}
-                xs={12}
                 sx={{
                   paddingTop: 5,
+                  marginLeft: 16,
+                  width: "100%",
                 }}
               >
-                <h2 style={{ color: colors.white }}>Work Experience</h2>
-                <Box>
+                <h1 style={{ color: colors.white, marginBottom: 0 }}>
+                  My Experience
+                </h1>
+                <Box style={{ color: colors.midBlue, marginBottom: 24 }}>
                   <Tabs
                     value={value}
                     onChange={handleChange}
-                    aria-label="basic tabs example"
+                    textColor="inherit"
+                    indicatorColor="primary"
+                    sx={{
+                      width: "100%",
+                      color: "white",
+                    }}
                   >
-                    <Tab label="Citylitics" {...a11yProps(0)} />
-                    <Tab label="Shopify" {...a11yProps(1)} />
-                    <Tab label="Neutral" {...a11yProps(2)} />
-                    <Tab label="Western University" {...a11yProps(3)} />
+                    <Tab
+                      label={
+                        <p
+                          style={{
+                            textTransform: "none",
+                          }}
+                        >
+                          Citylitics{" "}
+                        </p>
+                      }
+                      {...a11yProps(0)}
+                    />
+                    <Tab
+                      label={
+                        <p
+                          style={{
+                            textTransform: "none",
+                          }}
+                        >
+                          Shopify{" "}
+                        </p>
+                      }
+                      {...a11yProps(1)}
+                    />
+                    <Tab
+                      label={
+                        <p
+                          style={{
+                            textTransform: "none",
+                          }}
+                        >
+                          Neutral{" "}
+                        </p>
+                      }
+                      {...a11yProps(2)}
+                    />
+                    <Tab
+                      label={
+                        <p
+                          style={{
+                            textTransform: "none",
+                          }}
+                        >
+                          Western University{" "}
+                        </p>
+                      }
+                      {...a11yProps(3)}
+                    />
                   </Tabs>
                 </Box>
               </Grid>
+              <Grid item>
+                <TabPanel value={value} index={0}>
+                  <WorkCard
+                    header="How can we leverage the power of tech to improve city infrastructure?"
+                    desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
+                    primaryBtn="In Progress"
+                    primaryBtnLink=""
+                    bgColor={colors.darkBlue}
+                    textColor={colors.white}
+                    featuredImage={city}
+                    logo={""}
+                    skills={["React", "Django"]}
+                    date={"March 2023 - Present"}
+                  />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                  <WorkCard
+                    header="How can we make the important easy and everything else possible for Shopify merchants?"
+                    desc="fsfs"
+                    primaryBtn="In Progress"
+                    primaryBtnLink=""
+                    bgColor={colors.darkBlue}
+                    textColor={colors.white}
+                    featuredImage={shopify}
+                    logo={""}
+                    skills={[]}
+                    date={""}
+                  ></WorkCard>
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                  <WorkCard
+                    header="Green Tech Startup Incubated At Mozilla Builders"
+                    desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
+                    primaryBtn="View Product"
+                    primaryBtnLink=""
+                    bgColor={colors.darkBlue}
+                    textColor={colors.white}
+                    featuredImage={neutral2}
+                    logo={""}
+                    skills={[]}
+                    date={""}
+                  ></WorkCard>
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                  <WorkCard
+                    header="Western University"
+                    desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
+                    primaryBtn="View Product"
+                    primaryBtnLink=""
+                    bgColor={colors.darkBlue}
+                    textColor={colors.white}
+                    featuredImage={neutral2}
+                    logo={""}
+                    skills={[]}
+                    date={""}
+                  ></WorkCard>
+                </TabPanel>
+              </Grid>
             </Grid>
-            <Box sx={{ width: "100%" }}>
-              <TabPanel value={value} index={0}>
-                <WorkCard
-                  header="How can we leverage the power of tech to improve city infrastructure?"
-                  desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
-                  primaryBtn="In Progress"
-                  primaryBtnLink=""
-                  bgColor={colors.darkBlue}
-                  textColor={colors.white}
-                  featuredImage={city}
-                  positionText="left"
-                ></WorkCard>
-              </TabPanel>
-              <TabPanel value={value} index={1}>
-                <WorkCard
-                  header="How can we make the important easy and everything else possible for Shopify merchants?"
-                  desc="fsfs"
-                  primaryBtn="In Progress"
-                  primaryBtnLink=""
-                  bgColor={colors.darkBlue}
-                  textColor={colors.white}
-                  featuredImage={shopify}
-                  positionText="left"
-                ></WorkCard>
-              </TabPanel>
-              <TabPanel value={value} index={2}>
-                <WorkCard
-                  header="Green Tech Startup Incubated At Mozilla Builders"
-                  desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
-                  primaryBtn="View Product"
-                  primaryBtnLink=""
-                  bgColor={colors.darkBlue}
-                  textColor={colors.white}
-                  featuredImage={neutral2}
-                  positionText="left"
-                ></WorkCard>
-              </TabPanel>
-              <TabPanel value={value} index={3}>
-                <WorkCard
-                  header="Western University"
-                  desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
-                  primaryBtn="View Product"
-                  primaryBtnLink=""
-                  bgColor={colors.darkBlue}
-                  textColor={colors.white}
-                  featuredImage={neutral2}
-                  positionText="left"
-                ></WorkCard>
-              </TabPanel>
-            </Box>
           </Grid>
-
+          <Grid container md={12} justifyContent={"center"}>
+            <img src={profilepic} style={{ width: "50%" }}></img>
+          </Grid>
+          <Grid
+            container
+            xs={12}
+            color={colors.darkBlue}
+            sx={{
+              marginTop: 12,
+              marginBottom: 12,
+            }}
+          >
+            <TitleCard
+              header="A little overview"
+              desc="Here's an at-a-glance summary of my skills as a developer."
+              titleImg={desk}
+              positionText="left"
+              bgColor={colors.darkBlue}
+              textColor={colors.white}
+              descTextColor={colors.white}
+            ></TitleCard>
+            <Grid item xs={12} md={4}>
+              <Box
+                sx={{
+                  padding: 4,
+                  backgroundColor: colors.darkBlue,
+                  borderRadius: 4,
+                  marginTop: 4,
+                  height: "100%",
+                  marginRight: {
+                    md: 4,
+                    xs: 0,
+                  },
+                }}
+              >
+                <h2>Languages</h2>
+                <Box>
+                  <SkillsBar
+                    skill="Javascript/Typescript"
+                    value={80}
+                  ></SkillsBar>
+                  <SkillsBar skill="Java" value={90}></SkillsBar>
+                  <SkillsBar skill="Python" value={80}></SkillsBar>
+                  <SkillsBar skill="C/C++" value={70}></SkillsBar>
+                  <SkillsBar skill="C#" value={60}></SkillsBar>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={8}>
+              <Box
+                sx={{
+                  backgroundColor: colors.darkBlue,
+                  borderRadius: 4,
+                  padding: 4,
+                  marginTop: 4,
+                  height: "100%",
+                }}
+              >
+                <Grid item xs={12}>
+                  <h2>Skills & technologies</h2>
+                </Grid>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Technology name="React" />
+                  <Technology name="Django" />
+                  <Technology name="Google Cloud Platform" />
+                  <Technology name="Git Version Control" />
+                  <Technology name="CI/CD" />
+                  <Technology name="API Design" />
+                  <Technology name="Unity 3D & Blender" />
+                  <Technology name="Docker" />
+                  <Technology name="Kubernetes" />
+                  <Technology name="react-query" />
+                  <Technology name="redux" />
+                  <Technology name="Object Oriented Design" />
+                  <Technology name="react-testing-library" />
+                  <Technology name="jest" />
+                  <Technology name="Behaviour Driven Development" />
+                  <Technology name="Software Architechture & Design" />
+                  <Technology name="Software Design Patterns" />
+                  <Technology name="Solid Design Principles" />
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
           <TitleCard
             header="Projects"
             desc="Things I've built with my fingers (but not toes)."
@@ -396,6 +719,13 @@ const DevelopmentPage = () => {
             positionText="left"
           ></FeaturedCard>
         </Grid>
+        <Button
+          variant="contained"
+          endIcon={<ArrowCircleRightIcon />}
+          sx={{ display: "flex", flex: "flex-end" }}
+        >
+          See All Projects
+        </Button>
       </Grid>
       <Footer
         textColor={colors.darkOrange}

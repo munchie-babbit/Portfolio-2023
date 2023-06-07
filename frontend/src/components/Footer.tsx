@@ -1,4 +1,11 @@
-import { AppBar, IconButton, Toolbar, Divider, Grid } from "@mui/material";
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Divider,
+  Grid,
+  Link,
+} from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
@@ -32,9 +39,57 @@ const Footer = ({
         <Divider></Divider>
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <h3 style={{ color: textColor }}>
-              @2023 Estelle Chung. All Rights Reserved.
-            </h3>
+            <p style={{ color: textColor }}>
+              Drawn in{" "}
+              <Link
+                sx={{
+                  color: textColor,
+                  fontWeight: "bold",
+                  textDecoration: "none",
+                }}
+                href="https://procreate.com/"
+                target="_blank"
+              >
+                Procreate
+              </Link>
+              . Designed in{" "}
+              <Link
+                href="https://www.figma.com/"
+                target="_blank"
+                sx={{
+                  color: textColor,
+                  fontWeight: "bold",
+                  textDecoration: "none",
+                }}
+              >
+                Figma
+              </Link>
+              .<div></div> Built with{" "}
+              <Link
+                href="https://react.dev/"
+                target="_blank"
+                sx={{
+                  color: textColor,
+                  fontWeight: "bold",
+                  textDecoration: "none",
+                }}
+              >
+                React
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="https://mui.com/"
+                target="_blank"
+                sx={{
+                  color: textColor,
+                  fontWeight: "bold",
+                  textDecoration: "none",
+                }}
+              >
+                MUI
+              </Link>
+              .
+            </p>
           </Grid>
           <Grid item xs={12}>
             <IconButton

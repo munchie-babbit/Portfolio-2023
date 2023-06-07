@@ -1,4 +1,5 @@
-import { Card, Grid, Container, Button } from "@mui/material";
+import { Card, Grid, Container, Button, Chip } from "@mui/material";
+import { colors } from "../styles";
 
 export const WorkCard = ({
   header,
@@ -24,7 +25,7 @@ export const WorkCard = ({
   textColor: string;
   featuredImage: string;
   logo: string;
-  skills: [];
+  skills: string[];
   date: string;
 }) => {
   return (
@@ -33,13 +34,10 @@ export const WorkCard = ({
       sx={{
         backgroundColor: bgColor,
         color: textColor,
-        height: "auto",
-        minHeight: 500,
         borderRadius: 4,
         display: "flex",
-        marginTop: 4,
-        marginBottom: 4,
         padding: 12,
+        paddingTop: 0,
         alignItems: "center",
         img: {
           maxWidth: "100%",
@@ -58,30 +56,17 @@ export const WorkCard = ({
           paddingRight: 4,
         }}
       >
-        <h2>{header}</h2>
-        <p>{desc}</p>
-        <Button
-          variant="contained"
-          disableElevation
-          sx={{
-            marginTop: 2,
-            backgroundColor: textColor,
-            color: bgColor,
-            paddingTop: 2,
-            paddingBottom: 2,
-            paddingLeft: 4,
-            paddingRight: 4,
-            fontFamily: "IBM Plex Mono",
-          }}
-          href={primaryBtnLink}
-        >
-          {primaryBtn}
-        </Button>
-        {secondaryBtn && (
-          <Button variant="contained" href={secondaryBtnLink}>
-            {secondaryBtn}
-          </Button>
-        )}
+        <p style={{ color: colors.midBlue }}>{date}</p>
+        <h4>{header}</h4>
+        {skills.map((skill) => (
+          <Chip
+            sx={{ backgroundColor: colors.purple, marginRight: 1, padding: 1 }}
+            label={skill}
+            key={skill}
+          />
+        ))}
+
+        <p style={{ color: colors.midBlue }}>{desc}</p>
       </Grid>
       <Grid item md={5}>
         <img src={featuredImage}></img>
