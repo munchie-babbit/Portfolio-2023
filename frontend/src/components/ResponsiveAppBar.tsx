@@ -104,7 +104,7 @@ function ResponsiveAppBar() {
   //Get current page
   const [currentRole, setCurrentRole] = useState("");
   const [pages, setPages] = useState([{ title: "", link: "" }]);
-  const [currentColour, setCurrentColour] = useState("");
+  const [currentColour, setCurrentColour] = useState("#030816");
   const [roleTextColour, setRoleTextColour] = useState("");
   const updateRole = (role: string) => {
     setCurrentRole(role);
@@ -174,6 +174,7 @@ function ResponsiveAppBar() {
       sx={{
         backgroundColor: currentColour,
         paddingTop: 2,
+        boxShadow: "none",
       }}
     >
       <Container maxWidth="lg">

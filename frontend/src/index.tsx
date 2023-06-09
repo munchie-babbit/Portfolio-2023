@@ -40,16 +40,23 @@ const theme = createTheme({
 });
 
 export default function App() {
+  const wrapInNav = (component: JSX.Element): JSX.Element => {
+    return (
+      <div>
+        <ResponsiveAppBar />
+        {component}
+      </div>
+    );
+  };
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<ResponsiveAppBar />}>
-          <Route index element={<DevelopmentPage />} />
-          <Route path="design" element={<DesignPage />} />
-          <Route path="dev" element={<DevelopmentPage />} />
-          <Route path="art" element={<ArtPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
+        <Route path="/" element={wrapInNav(<DevelopmentPage />)} />
+        <Route index element={wrapInNav(<DevelopmentPage />)} />
+        {/* <Route path="design" element={wrapInNav(<DesignPage />)} /> */}
+        <Route path="/dev" element={wrapInNav(<DevelopmentPage />)} />
+        <Route path="/art" element={wrapInNav(<ArtPage />)} />
+        {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Routes>
     </BrowserRouter>
   );
