@@ -36,31 +36,26 @@ export const WorkCard = ({
         color: textColor,
         borderRadius: 4,
         display: "flex",
-        padding: 12,
-        paddingTop: 0,
         alignItems: "center",
         img: {
-          maxWidth: "100%",
+          width: "100%",
           borderRadius: 4,
-          paddingTop: {
-            xs: 4,
-            md: 0,
-          },
         },
       }}
     >
       <Grid
         item
         md={7}
+        xs={12}
         sx={{
-          paddingRight: 4,
+          paddingRight: { md: 8, xs: 0 },
         }}
       >
         <p style={{ color: colors.midBlue }}>{date}</p>
         <h4>{header}</h4>
         {skills.map((skill) => (
           <Chip
-            sx={{ backgroundColor: colors.purple, marginRight: 1, padding: 1 }}
+            sx={{ backgroundColor: colors.purple, margin: 0.5, padding: 1 }}
             label={skill}
             key={skill}
           />
@@ -68,7 +63,7 @@ export const WorkCard = ({
 
         <p style={{ color: colors.midBlue }}>{desc}</p>
       </Grid>
-      <Grid item md={5}>
+      <Grid item md={5} xs={12}>
         <img src={featuredImage}></img>
       </Grid>
     </Grid>
@@ -110,12 +105,12 @@ const FeaturedCard = ({
           display: "flex",
           marginTop: 4,
           marginBottom: 4,
-          padding: 12,
+          padding: { md: 12, xs: 4 },
           alignItems: "center",
           img: {
             maxWidth: "100%",
             borderRadius: 4,
-            paddingTop: {
+            padding: {
               xs: 4,
               md: 0,
             },
@@ -172,12 +167,12 @@ const FeaturedCard = ({
           minHeight: 500,
           height: "auto",
           borderRadius: 4,
-          padding: 12,
+          padding: { md: 12, xs: 4 },
           display: "flex",
           alignItems: "center",
           img: {
             maxWidth: "100%",
-            paddingTop: {
+            padding: {
               xs: 4,
               md: 0,
             },

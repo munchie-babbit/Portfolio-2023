@@ -259,7 +259,7 @@ const ArtPage = () => {
           </h2>
           <p style={{ whiteSpace: "pre-line" }}>{artistBio}</p>
         </Grid>
-        <Grid item xs={12} md={7} sx={{ paddingLeft: 12 }}>
+        <Grid item xs={12} md={7} sx={{ paddingLeft: { md: 12, xs: 0 } }}>
           <List>
             <ListSubheader disableSticky>
               <h1 style={{ color: colors.darkOrange }}>
@@ -309,7 +309,7 @@ const ArtPage = () => {
               position="below"
               sx={{
                 color: colors.darkOrange,
-                fontFamily: "IBM Plex Mono",
+                fontFamily: "sanshiro",
                 textAlign: "center",
               }}
             />

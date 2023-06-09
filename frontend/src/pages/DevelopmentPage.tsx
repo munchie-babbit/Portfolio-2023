@@ -100,7 +100,7 @@ const TitleCard = ({
           backgroundColor: bgColor,
           borderRadius: 4,
           height: 200,
-          paddingLeft: 12,
+          px: { md: 12, xs: 4 },
           display: "flex",
           overflow: "hidden",
           justifyContent: "flex-end",
@@ -306,7 +306,7 @@ const DevelopmentPage = () => {
               <Box
                 sx={{
                   zIndex: 2,
-                  width: 300,
+                  width: { md: "300px", xs: "200px" },
                   position: "absolute",
                   marginTop: {
                     xs: 2,
@@ -314,7 +314,7 @@ const DevelopmentPage = () => {
                   },
                   marginLeft: 4,
                   img: {
-                    width: 300,
+                    width: "100%",
                   },
                 }}
               >
@@ -438,15 +438,21 @@ const DevelopmentPage = () => {
                   }}
                   src={dots}
                 />
-                <img
-                  style={{
-                    width: "100%",
+                <Box
+                  sx={{
+                    width: { md: "70%", xs: "100%" },
                     position: "absolute",
-                    top: -200,
+                    top: { md: -200, xs: -100 },
                     zIndex: 1,
                   }}
-                  src={stars}
-                />
+                >
+                  <img
+                    style={{
+                      width: "100%",
+                    }}
+                    src={stars}
+                  />
+                </Box>
               </Box>
             </Grid>
           </Grid>
@@ -465,13 +471,12 @@ const DevelopmentPage = () => {
               sx={{
                 backgroundColor: colors.darkBlue,
                 borderRadius: 4,
-                paddingLeft: 4,
+                px: { md: 8, xs: 2 },
                 minHeight: "700px",
                 img: {
-                  width: 400,
+                  width: "100%",
                   bottom: 0,
                   right: 0,
-                  maxWidth: "80%",
                 },
                 p: {
                   color: colors.midBlue,
@@ -482,15 +487,15 @@ const DevelopmentPage = () => {
               <Grid
                 item
                 sx={{
-                  paddingTop: 5,
-                  marginLeft: 16,
+                  paddingTop: 4,
                   width: "100%",
+                  px: 2,
                 }}
               >
                 <h1 style={{ color: colors.white, marginBottom: 0 }}>
                   My Experience
                 </h1>
-                <Box style={{ color: colors.midBlue, marginBottom: 24 }}>
+                <Box style={{ color: colors.midBlue, marginBottom: 0 }}>
                   <Tabs
                     value={value}
                     onChange={handleChange}
@@ -639,7 +644,7 @@ const DevelopmentPage = () => {
               descTextColor={colors.white}
             ></TitleCard>
             <div id="intro"></div>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={4} sx={{ marginBottom: { md: 0, xs: 4 } }}>
               <Box
                 sx={{
                   padding: 4,
@@ -677,7 +682,7 @@ const DevelopmentPage = () => {
                   backgroundColor: colors.darkBlue,
                   borderRadius: 4,
                   padding: 4,
-                  marginTop: 4,
+                  my: 4,
                   height: "100%",
                 }}
               >
@@ -722,7 +727,7 @@ const DevelopmentPage = () => {
             titleImg={projects}
             positionText="left"
             bgColor={colors.darkBlue}
-            textColor={colors.lightOrange}
+            textColor={colors.white}
             descTextColor="white"
           ></TitleCard>
           <div id="projects"></div>

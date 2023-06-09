@@ -23,8 +23,8 @@ import {
 } from "@mui/material";
 
 import logo from "../images/logo-white.png";
+import logoColour from "../images/logo.png";
 import { styled, alpha } from "@mui/material/styles";
-// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Outlet } from "react-router-dom";
 
 const roleMenuPages = {
@@ -345,7 +345,11 @@ function ResponsiveAppBar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <MenuIcon
+                sx={{
+                  color: currentRole === "The Developer" ? "white" : "black",
+                }}
+              />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -363,12 +367,16 @@ function ResponsiveAppBar() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
-                maxWidth: "md",
+                maxWidth: "400px",
               }}
             >
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <p style={{ textAlign: "center" }}>{page.title}</p>
+                  <Button href={page.link}>
+                    <h2 style={{ textAlign: "center", color: colors.darkBlue }}>
+                      {page.title}
+                    </h2>
+                  </Button>
                 </MenuItem>
               ))}
             </Menu>
@@ -389,7 +397,10 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            <LogoImage src={logo} alt="Estelle Chung"></LogoImage>
+            <LogoImage
+              src={currentRole === "The Developer" ? logo : logoColour}
+              alt="Estelle Chung"
+            ></LogoImage>
           </Typography>
           <Box
             sx={{
