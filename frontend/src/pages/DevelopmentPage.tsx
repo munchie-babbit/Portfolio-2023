@@ -38,9 +38,10 @@ import dots from "../images/dev/Untitled_Artwork 119.png";
 import splashimg from "../images/dev/splash.gif";
 import aboutme from "../images/dev/Untitled_Artwork 11.png";
 import profilepic from "../images/dev/Untitled_Artwork 17.png";
+import stars from "../images/dev/stars.gif";
 
 import { colors } from "../styles";
-import zIndex from "@mui/material/styles/zIndex";
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -254,7 +255,11 @@ const DevelopmentPage = () => {
                 I embrace creativity and innovation to build impactful solutions
                 that address the important problems.
               </h1>
-              <p style={{ color: colors.midBlue, width: "70%" }}>
+              <p
+                style={{
+                  color: colors.midBlue,
+                }}
+              >
                 I’m a fullstack developer who is always up for a challenge! As a
                 former product designer at{" "}
                 <Link
@@ -303,7 +308,10 @@ const DevelopmentPage = () => {
                   zIndex: 2,
                   width: 300,
                   position: "absolute",
-                  marginTop: 8,
+                  marginTop: {
+                    xs: 2,
+                    md: 8,
+                  },
                   marginLeft: 4,
                   img: {
                     width: 300,
@@ -411,16 +419,35 @@ const DevelopmentPage = () => {
               </svg>
             </Grid>
             <Grid container justifyContent="center" sx={{ width: "100%" }}>
-              <img
-                style={{
-                  width: "400px",
-                  marginTop: 100,
-                  marginBottom: 140,
-                  margin: "auto",
-                  zIndex: 2,
+              <Box
+                sx={{
+                  marginTop: 20,
+                  marginBottom: 30,
+                  position: "relative",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
                 }}
-                src={dots}
-              />
+              >
+                <img
+                  style={{
+                    width: "400px",
+                    position: "absolute",
+                    top: 0,
+                    zIndex: 2,
+                  }}
+                  src={dots}
+                />
+                <img
+                  style={{
+                    width: "100%",
+                    position: "absolute",
+                    top: -200,
+                    zIndex: 1,
+                  }}
+                  src={stars}
+                />
+              </Box>
             </Grid>
           </Grid>
         </Fade>
@@ -517,7 +544,7 @@ const DevelopmentPage = () => {
                             textTransform: "none",
                           }}
                         >
-                          Western University{" "}
+                          Western University
                         </p>
                       }
                       {...a11yProps(3)}
@@ -529,57 +556,62 @@ const DevelopmentPage = () => {
                 <TabPanel value={value} index={0}>
                   <WorkCard
                     header="How can we leverage the power of tech to improve city infrastructure?"
-                    desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
-                    primaryBtn="In Progress"
+                    desc="I’m currently at Citylitics, working on our data platform as a fullstack developer. I’ve contributed to initiatives to optimize data querying and building out a feature for users to provide feedback on the usefulness of their data insights. I’m also leading the initiative to simplify our client-side state management by migrating away from Redux."
+                    primaryBtn=""
                     primaryBtnLink=""
                     bgColor={colors.darkBlue}
                     textColor={colors.white}
                     featuredImage={city}
                     logo={""}
-                    skills={["React", "Django"]}
+                    skills={["React", "Django", "Typescript", "React Query"]}
                     date={"March 2023 - Present"}
                   />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                   <WorkCard
                     header="How can we make the important easy and everything else possible for Shopify merchants?"
-                    desc="fsfs"
-                    primaryBtn="In Progress"
+                    desc="As a member of the inventory team, I focused on simplifying crucial tasks and helping merchants make the important easy and everything else possible. As a product designer, I created a mobile-first inventory history feature that successfully launched to over 2 million Shopify businesses, greatly enhancing usability. I collaborated closely with development teams, ensuring precise implementation of designs while upholding accessibility standards."
+                    primaryBtn=""
                     primaryBtnLink=""
                     bgColor={colors.darkBlue}
                     textColor={colors.white}
                     featuredImage={shopify}
                     logo={""}
-                    skills={[]}
-                    date={""}
+                    skills={[
+                      "Product Design",
+                      "Figma",
+                      "UI/UX",
+                      "User Research",
+                    ]}
+                    date={"May 2020 - Dec 2021"}
                   ></WorkCard>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                   <WorkCard
-                    header="Green Tech Startup Incubated At Mozilla Builders"
-                    desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
-                    primaryBtn="View Product"
+                    header="How can we help online shoppers calculate their carbon footprint?"
+                    desc="I spearheaded the product design and contributed to frontend development for Neutral, a browser extension that empowers users to shop sustainably by measuring the carbon footprint of their online purchases. Our achievements include winning the Moonshot prize at Treehacks, securing a spot in the Mozilla Builders Incubator, and gaining recognition from Fast Company."
+                    primaryBtn=""
                     primaryBtnLink=""
                     bgColor={colors.darkBlue}
                     textColor={colors.white}
                     featuredImage={neutral2}
                     logo={""}
-                    skills={[]}
-                    date={""}
+                    skills={["HTML/CSS", "Javascript", "Figma"]}
+                    date={"Feb 2020 - Aug 2020"}
                   ></WorkCard>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
                   <WorkCard
-                    header="Western University"
-                    desc="I worked with a few friends to build a Twitter bot that monitored a stream of incoming tweets using Python and Twitter API and flagged potentially fake news by replying with relevant factual "
-                    primaryBtn="View Product"
+                    header="How can we help enginners at Western University visualize sensor data?"
+                    desc="I worked as a fullstack developer for the University of Western Ontario. I constructed a web platform capable of storing both historical and real-time data gathered from sensors developed by the faculty of engineering for various projects. Leveraging the power of the LAMP (Linux, Apache, MySQL, PHP) stack, alongside chart.js and HTML/CSS, I built a platform that seamlessly integrated efficient data storage and user-friendly visualizations of data."
+                    primaryBtn=""
                     primaryBtnLink=""
                     bgColor={colors.darkBlue}
                     textColor={colors.white}
                     featuredImage={neutral2}
                     logo={""}
-                    skills={[]}
-                    date={""}
+                    skills={["PHP", "HTML/CSS", "Javascript"]}
+                    date={"Oct 2019 - May 2020"}
                   ></WorkCard>
                 </TabPanel>
               </Grid>
@@ -598,7 +630,7 @@ const DevelopmentPage = () => {
             }}
           >
             <TitleCard
-              header="A little overview"
+              header="A Little Overview"
               desc="Here's an at-a-glance summary of my skills as a developer."
               titleImg={desk}
               positionText="left"
@@ -662,7 +694,7 @@ const DevelopmentPage = () => {
                   <Technology name="Django" />
                   <Technology name="Google Cloud Platform" />
                   <Technology name="Git Version Control" />
-                  <Technology name="CI/CD" />
+                  <Technology name="CI/CD Practices" />
                   <Technology name="API Design" />
                   <Technology name="Unity 3D & Blender" />
                   <Technology name="Docker" />
@@ -672,10 +704,13 @@ const DevelopmentPage = () => {
                   <Technology name="Object Oriented Design" />
                   <Technology name="react-testing-library" />
                   <Technology name="jest" />
+                  <Technology name="pytest" />
                   <Technology name="Behaviour Driven Development" />
                   <Technology name="Software Architechture & Design" />
                   <Technology name="Software Design Patterns" />
                   <Technology name="Solid Design Principles" />
+                  <Technology name="MUI" />
+                  <Technology name="AntD" />
                 </Box>
               </Box>
             </Grid>

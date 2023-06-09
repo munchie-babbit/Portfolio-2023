@@ -19,11 +19,22 @@ const theme = createTheme({
     secondary: {
       main: "#0074A4", // Blue
     },
+    background: {
+      default: "#030816",
+    },
   },
   transitions: {
     duration: {
       enteringScreen: 600,
       leavingScreen: 200,
+    },
+  },
+  typography: {
+    h1: {
+      fontFamily: "'sanshiro', sans-serif",
+      fontSize: "40px",
+      color: "#ED6A40",
+      letterSpacing: "30px",
     },
   },
 });

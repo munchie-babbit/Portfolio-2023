@@ -2,6 +2,7 @@
   "name": "estellechung.com",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://estellechung.com/dev",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
     "@types/react-wow": "^1.0.1",
+    "gh-pages": "^5.0.0",
     "prettier": "2.8.8",
     "react-router-dom": "^6.11.1"
   }
