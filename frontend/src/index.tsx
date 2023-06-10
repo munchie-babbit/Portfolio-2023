@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import ArtPage from "./pages/ArtPage";
 import DesignPage from "./pages/DesignPage";
@@ -49,13 +49,13 @@ export default function App() {
     );
   };
   return (
-    <BrowserRouter>
+    <Router basename="/">
       <Routes>
         <Route index element={wrapInNav(<DevelopmentPage />)} />
         <Route path="dev" element={wrapInNav(<DevelopmentPage />)} />
         <Route path="art" element={wrapInNav(<ArtPage />)} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

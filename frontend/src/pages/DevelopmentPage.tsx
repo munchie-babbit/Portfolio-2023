@@ -624,7 +624,7 @@ const DevelopmentPage = () => {
                 </TabPanel>
                 <TabPanel value={value} index={3}>
                   <WorkCard
-                    header="How can we help enginners at Western University visualize sensor data?"
+                    header="How can we help engineers at Western University visualize sensor data?"
                     desc="I worked as a fullstack developer for the University of Western Ontario. I constructed a web platform capable of storing both historical and real-time data gathered from sensors developed by the faculty of engineering for various projects. Leveraging the power of the LAMP (Linux, Apache, MySQL, PHP) stack, alongside chart.js and HTML/CSS, I built a platform that seamlessly integrated efficient data storage and user-friendly visualizations of data."
                     primaryBtn=""
                     primaryBtnLink=""
