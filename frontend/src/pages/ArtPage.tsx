@@ -222,154 +222,143 @@ const Item = styled(Box)(({ theme }) => ({
 
 const ArtPage = () => {
   return (
-    <Container>
-      <Grid
-        container
-        sx={{
-          height: 600,
-          overflow: "hidden",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          borderRadius: 8,
-        }}
-      >
-        <img src={video} style={styles.image} />
-      </Grid>
-
-      <Grid
-        container
-        sx={{
-          paddingTop: 12,
-        }}
-      >
-        <Grid item xs={12} md={5}>
-          <Box
-            component="img"
-            sx={{
-              width: 1,
-              borderRadius: 8,
-              marginTop: 4,
-            }}
-            alt="Estelle growing up"
-            src={img10}
-          />
-          <h2 id="overview" style={{ color: colors.darkOrange, marginTop: 40 }}>
-            Hi I'm Estelle!
-          </h2>
-          <p style={{ whiteSpace: "pre-line" }}>{artistBio}</p>
-        </Grid>
-        <Grid item xs={12} md={7} sx={{ paddingLeft: { md: 12, xs: 0 } }}>
-          <List>
-            <ListSubheader disableSticky>
-              <h1 style={{ color: colors.darkOrange }}>
-                {" "}
-                Artistic Collaborations & Features
-              </h1>
-            </ListSubheader>
-            {items.map((item, index) => (
-              <React.Fragment key={index}>
-                <ListItem alignItems="flex-start">
-                  <ListItemAvatar sx={{ my: "auto" }}>
-                    <Avatar
-                      sx={{ bgcolor: item.color }}
-                      alt={item.primary}
-                      src={item.avatarSrc}
-                    />
-                  </ListItemAvatar>
-                  <ListItemText
-                    sx={{ width: "10%", my: "auto", paddingRight: 4 }}
-                  >
-                    <p style={{ fontWeight: "bold" }}>{item.primary}</p>
-                  </ListItemText>
-                  <ListItemText sx={{ width: "50%" }}>
-                    <p>{item.secondary}</p>
-                  </ListItemText>
-                </ListItem>
-                {index < items.length - 1 && (
-                  <Divider variant="inset" component="li" />
-                )}
-              </React.Fragment>
-            ))}
-          </List>
-        </Grid>
-      </Grid>
-      <ImageList cols={5} gap={24} sx={{ marginTop: 12 }}>
-        {artStyles.map((item) => (
-          <ImageListItem key={item.img}>
-            <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.title}
-              loading="lazy"
-              style={styles.round}
-            />
-            <ImageListItemBar
-              title={item.title}
-              position="below"
-              sx={{
-                color: colors.darkOrange,
-                fontFamily: "sanshiro",
-                textAlign: "center",
-              }}
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-      <Box
-        sx={{
-          color: colors.darkBlue,
-          textAlign: "center",
-          paddingTop: 12,
-        }}
-      >
-        <h1 id="featured-work">Featured Work</h1>
-      </Box>
-      <ImageList variant="masonry" cols={4} gap={8}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img} sx={{}}>
-            <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.title}
-              loading="lazy"
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-      <Grid item id="hire-me" sx={{ marginTop: 12 }}>
-        <FeaturedCard
-          header="Get in touch :-)"
-          desc="Interested in working with me on a project? Send an email and we can start chatting! I've working with clients from all walks of life and in all phases in their journeys. No project is too big or too small."
-          primaryBtn="Send me an email"
-          primaryBtnLink="mailto:estellechung333@gmail.com"
-          bgColor={colors.blue}
-          textColor="white"
-          featuredImage={saru}
-          positionText="left"
-        ></FeaturedCard>
-        {/* <Box
+    <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
+      <Container>
+        <Grid
+          container
           sx={{
-            color: "white",
-            backgroundColor: "rgba(0,129,186, 0.6)",
-            borderRadius: 12,
-            textAlign: "center",
-            marginTop: 12,
-            paddingTop: 4,
-            paddingBottom: 4,
+            height: 600,
+            overflow: "hidden",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 8,
           }}
         >
-          <h3>Let's Collaborate!</h3>
-          <h4> Get in touch for your next project</h4>
-          <p>Lorem ipsum</p>
-          <Button>Contact</Button>
-        </Box> */}
-      </Grid>
-      <Footer
-        textColor={colors.darkOrange}
-        iconColor={colors.darkOrange}
-      ></Footer>
-    </Container>
+          <img src={video} style={styles.image} />
+        </Grid>
+
+        <Grid
+          container
+          sx={{
+            paddingTop: 12,
+          }}
+        >
+          <Grid item xs={12} md={5}>
+            <Box
+              component="img"
+              sx={{
+                width: 1,
+                borderRadius: 8,
+                marginTop: 4,
+              }}
+              alt="Estelle growing up"
+              src={img10}
+            />
+            <h2
+              id="overview"
+              style={{ color: colors.darkOrange, marginTop: 40 }}
+            >
+              Hi I'm Estelle!
+            </h2>
+            <p style={{ whiteSpace: "pre-line" }}>{artistBio}</p>
+          </Grid>
+          <Grid item xs={12} md={7} sx={{ paddingLeft: { md: 12, xs: 0 } }}>
+            <List>
+              <ListSubheader disableSticky>
+                <h1 style={{ color: colors.darkOrange }}>
+                  {" "}
+                  Artistic Collaborations & Features
+                </h1>
+              </ListSubheader>
+              {items.map((item, index) => (
+                <React.Fragment key={index}>
+                  <ListItem alignItems="flex-start">
+                    <ListItemAvatar sx={{ my: "auto" }}>
+                      <Avatar
+                        sx={{ bgcolor: item.color }}
+                        alt={item.primary}
+                        src={item.avatarSrc}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      sx={{ width: "10%", my: "auto", paddingRight: 4 }}
+                    >
+                      <p style={{ fontWeight: "bold" }}>{item.primary}</p>
+                    </ListItemText>
+                    <ListItemText sx={{ width: "50%" }}>
+                      <p>{item.secondary}</p>
+                    </ListItemText>
+                  </ListItem>
+                  {index < items.length - 1 && (
+                    <Divider variant="inset" component="li" />
+                  )}
+                </React.Fragment>
+              ))}
+            </List>
+          </Grid>
+        </Grid>
+        <ImageList cols={5} gap={24} sx={{ marginTop: 12 }}>
+          {artStyles.map((item) => (
+            <ImageListItem key={item.img}>
+              <img
+                src={`${item.img}?w=248&fit=crop&auto=format`}
+                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                alt={item.title}
+                loading="lazy"
+                style={styles.round}
+              />
+              <ImageListItemBar
+                title={item.title}
+                position="below"
+                sx={{
+                  color: colors.darkOrange,
+                  fontFamily: "sanshiro",
+                  textAlign: "center",
+                }}
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+        <Box
+          sx={{
+            color: colors.darkBlue,
+            textAlign: "center",
+            paddingTop: 12,
+          }}
+        >
+          <h1 id="featured-work">Featured Work</h1>
+        </Box>
+        <ImageList variant="masonry" cols={4} gap={8}>
+          {itemData.map((item) => (
+            <ImageListItem key={item.img} sx={{}}>
+              <img
+                src={`${item.img}?w=248&fit=crop&auto=format`}
+                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                alt={item.title}
+                loading="lazy"
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+        <Grid item id="hire-me" sx={{ marginTop: 12 }}>
+          <FeaturedCard
+            header="Get in touch :-)"
+            desc="Interested in working with me on a project? Send an email and we can start chatting! I've working with clients from all walks of life and in all phases in their journeys. No project is too big or too small."
+            primaryBtn="Send me an email"
+            primaryBtnLink="mailto:estellechung333@gmail.com"
+            bgColor={colors.blue}
+            textColor="white"
+            featuredImage={saru}
+            positionText="left"
+          ></FeaturedCard>
+        </Grid>
+        <Footer
+          textColor={colors.darkOrange}
+          iconColor={colors.darkOrange}
+        ></Footer>
+      </Container>
+    </div>
   );
 };
 

@@ -51,12 +51,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={wrapInNav(<DevelopmentPage />)} />
         <Route index element={wrapInNav(<DevelopmentPage />)} />
-        {/* <Route path="design" element={wrapInNav(<DesignPage />)} /> */}
-        <Route path="/dev" element={wrapInNav(<DevelopmentPage />)} />
-        <Route path="/art" element={wrapInNav(<ArtPage />)} />
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
+        <Route path="dev" element={wrapInNav(<DevelopmentPage />)} />
+        <Route path="art" element={wrapInNav(<ArtPage />)} />
       </Routes>
     </BrowserRouter>
   );

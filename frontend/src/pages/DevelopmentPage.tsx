@@ -32,6 +32,7 @@ import twitter from "../images/dev/Birds.png";
 import city from "../images/dev/city.jpeg";
 import shopify from "../images/dev/shopify.png";
 import neutral2 from "../images/dev/neutral2.png";
+import uwo from "../images/dev/uwo.png";
 import splashgif from "../images/dev/Untitled_Artwork 3.gif";
 import comic from "../images/dev/Untitled_Artwork 132.png";
 import dots from "../images/dev/Untitled_Artwork 119.png";
@@ -249,40 +250,48 @@ const DevelopmentPage = () => {
           container={splashRef.current}
         >
           <Grid container alignItems="center">
-            <Grid item xs={12} md={7}>
+            <Grid
+              item
+              xs={12}
+              md={7}
+              sx={{ h1: { fontSize: { md: "30px", xs: "28px" } } }}
+            >
               <h2 style={{ color: colors.midOrange }}>HI, I'M ESTELLE!</h2>
               <h1 style={{ color: colors.darkOrange }}>
                 I embrace creativity and innovation to build impactful solutions
                 that address the important problems.
               </h1>
-              <p
-                style={{
-                  color: colors.midBlue,
-                }}
-              >
-                I’m a fullstack developer who is always up for a challenge! As a
-                former product designer at{" "}
-                <Link
-                  href=""
-                  target="_blank"
-                  color={colors.midBlue}
-                  sx={{ fontWeight: "bold" }}
+              <Box sx={{ width: { md: "70%", xs: "100%" } }}>
+                <p
+                  style={{
+                    color: colors.midBlue,
+                    width: "100%",
+                  }}
                 >
-                  Shopify
-                </Link>
-                , I’m a problem solver who is enthusiastic about human-centric
-                design and usability. Currently I’m working at{" "}
-                <Link
-                  href=""
-                  target="_blank"
-                  color={colors.midBlue}
-                  sx={{ fontWeight: "bold" }}
-                >
-                  Citylitics
-                </Link>
-                , focused on improving city infrastructure and the daily lives
-                for individuals throughout North America.
-              </p>
+                  I’m a fullstack developer who is always up for a challenge! As
+                  a former product designer at{" "}
+                  <Link
+                    href=""
+                    target="_blank"
+                    color={colors.midBlue}
+                    sx={{ fontWeight: "bold" }}
+                  >
+                    Shopify
+                  </Link>
+                  , I’m a problem solver who is enthusiastic about human-centric
+                  design and usability. Currently I’m working at{" "}
+                  <Link
+                    href=""
+                    target="_blank"
+                    color={colors.midBlue}
+                    sx={{ fontWeight: "bold" }}
+                  >
+                    Citylitics
+                  </Link>
+                  , focused on improving city infrastructure and the daily lives
+                  for individuals throughout North America.
+                </p>
+              </Box>
             </Grid>
             <Grid item xs={12} md={5}>
               <img
@@ -427,11 +436,16 @@ const DevelopmentPage = () => {
                   width: "100%",
                   display: "flex",
                   justifyContent: "center",
+                  img: {
+                    width: {
+                      md: "400px",
+                      xs: "200px",
+                    },
+                  },
                 }}
               >
                 <img
                   style={{
-                    width: "400px",
                     position: "absolute",
                     top: 0,
                     zIndex: 2,
@@ -486,24 +500,27 @@ const DevelopmentPage = () => {
             >
               <Grid
                 item
+                xs={12}
                 sx={{
                   paddingTop: 4,
-                  width: "100%",
                   px: 2,
                 }}
               >
                 <h1 style={{ color: colors.white, marginBottom: 0 }}>
                   My Experience
                 </h1>
-                <Box style={{ color: colors.midBlue, marginBottom: 0 }}>
+                <Box sx={{ color: colors.midBlue, marginBottom: 0 }}>
                   <Tabs
                     value={value}
                     onChange={handleChange}
+                    variant="scrollable"
+                    scrollButtons
+                    allowScrollButtonsMobile
                     textColor="inherit"
                     indicatorColor="primary"
                     sx={{
-                      width: "100%",
                       color: "white",
+                      maxWidth: "75vw",
                     }}
                   >
                     <Tab
@@ -613,7 +630,7 @@ const DevelopmentPage = () => {
                     primaryBtnLink=""
                     bgColor={colors.darkBlue}
                     textColor={colors.white}
-                    featuredImage={neutral2}
+                    featuredImage={uwo}
                     logo={""}
                     skills={["PHP", "HTML/CSS", "Javascript"]}
                     date={"Oct 2019 - May 2020"}
@@ -762,7 +779,7 @@ const DevelopmentPage = () => {
             positionText="left"
           ></FeaturedCard>
         </Grid>
-        <Grid container justifyContent={"end"}>
+        <Grid container sx={{ justifyContent: { md: "end", xs: "center" } }}>
           <Button
             variant="contained"
             endIcon={<ArrowCircleRightIcon />}
