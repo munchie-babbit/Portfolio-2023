@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import ArtPage from "./pages/ArtPage";
 import DesignPage from "./pages/DesignPage";
@@ -49,13 +49,13 @@ export default function App() {
     );
   };
   return (
-    <Router basename="/">
+    <HashRouter>
       <Routes>
-        <Route index element={wrapInNav(<DevelopmentPage />)} />
-        <Route path="dev" element={wrapInNav(<DevelopmentPage />)} />
-        <Route path="art" element={wrapInNav(<ArtPage />)} />
+        <Route path="/art" element={wrapInNav(<ArtPage />)} />
+        <Route path="/dev" element={wrapInNav(<DevelopmentPage />)} />
+        <Route path="/" element={wrapInNav(<DevelopmentPage />)} />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 

@@ -7,6 +7,8 @@ import ExpandCircleDownRoundedIcon from "@mui/icons-material/ExpandCircleDownRou
 import Brightness1Icon from "@mui/icons-material/Brightness1";
 import Brightness2Icon from "@mui/icons-material/Brightness2";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { colors } from "../styles";
 
 import {
@@ -110,15 +112,17 @@ function ResponsiveAppBar() {
     setCurrentRole(role);
   };
   // Get the current URL path
-  const currentPath = window.location.pathname;
+  console.log(window.location);
+  const currentPath = window.location.href;
 
   useEffect(() => {
-    if (currentPath === "/design") {
+    console.log(currentPath);
+    if (currentPath.includes("/design")) {
       setCurrentRole("The Product Designer");
       setCurrentColour(roleBackgroundColours.Designer);
       setPages(roleMenuPages.Designer);
       setRoleTextColour("white");
-    } else if (currentPath === "/art") {
+    } else if (currentPath.includes("/art")) {
       setCurrentRole("The Artist");
       setCurrentColour(roleBackgroundColours.Artist);
       setPages(roleMenuPages.Artist);
@@ -264,7 +268,7 @@ function ResponsiveAppBar() {
                         disableRipple
                         disableFocusRipple
                         disableTouchRipple
-                        href="/art"
+                        href="/#/art"
                         sx={{
                           backgroundColor: "transparent",
                           "&.MuiButtonBase-root:hover": {
@@ -308,7 +312,7 @@ function ResponsiveAppBar() {
                       }}
                     >
                       <Button
-                        href="/dev"
+                        href="/#/dev"
                         disableRipple
                         disableFocusRipple
                         disableTouchRipple
@@ -373,10 +377,18 @@ function ResponsiveAppBar() {
             >
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <Button href={page.link}>
-                    <h2 style={{ textAlign: "center", color: colors.darkBlue }}>
-                      {page.title}
-                    </h2>
+                  <Button>
+                    <HashLink
+                      to={page.link}
+                      smooth
+                      style={{ color: roleTextColour, textDecoration: "none" }}
+                    >
+                      <h2
+                        style={{ textAlign: "center", color: colors.darkBlue }}
+                      >
+                        {page.title}
+                      </h2>
+                    </HashLink>
                   </Button>
                 </MenuItem>
               ))}
@@ -429,7 +441,6 @@ function ResponsiveAppBar() {
                 disableFocusRipple
                 disableRipple
                 disableTouchRipple
-                href={page.link}
                 startIcon={
                   index === 0 ? (
                     <Brightness3Icon sx={{ color: colors.darkOrange }} />
@@ -440,7 +451,13 @@ function ResponsiveAppBar() {
                   )
                 }
               >
-                <h2>{page.title}</h2>
+                <HashLink
+                  to={page.link}
+                  smooth
+                  style={{ color: roleTextColour, textDecoration: "none" }}
+                >
+                  <h2>{page.title}</h2>
+                </HashLink>
               </Button>
             ))}
           </Box>

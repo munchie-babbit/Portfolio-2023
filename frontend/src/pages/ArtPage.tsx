@@ -221,6 +221,7 @@ const Item = styled(Box)(({ theme }) => ({
 }));
 
 const ArtPage = () => {
+  console.log("art yes");
   return (
     <div style={{ backgroundColor: "white", minHeight: "100vh" }}>
       <Container>
