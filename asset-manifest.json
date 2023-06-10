@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.11fad031.css",
-    "main.js": "/static/js/main.52a1d443.js",
+    "main.css": "/static/css/main.a5149b79.css",
+    "main.js": "/static/js/main.81f0bbf3.js",
     "static/media/video.gif": "/static/media/video.04ae563aaaf8f122c59e.gif",
     "static/media/Untitled_Artwork 132.png": "/static/media/Untitled_Artwork 132.1f2bc20cd6d3f925b858.png",
     "static/media/Untitled_Artwork 3.gif": "/static/media/Untitled_Artwork 3.31fcba7e30d4e2c723ab.gif",
@@ -27,6 +27,7 @@
     "static/media/Shehacks Komal.png": "/static/media/Shehacks Komal.118c30c349b1ce6349fa.png",
     "static/media/shopify.png": "/static/media/shopify.0f0e4c9c1c668d330bfd.png",
     "static/media/neutral2.png": "/static/media/neutral2.f9122b466bb3f1fab857.png",
+    "static/media/uwo.png": "/static/media/uwo.17b42e928036a340cfa0.png",
     "static/media/No Gravity.jpg": "/static/media/No Gravity.3d433bae37adfe8b541d.jpg",
     "static/media/Flora For Treasurer.jpg": "/static/media/Flora For Treasurer.48a87576a128409109df.jpg",
     "static/media/RecoveryProject.png": "/static/media/RecoveryProject.73f59d19ee9e77a8752b.png",
@@ -47,11 +48,11 @@
     "static/media/sanshiro-black-webfont.woff": "/static/media/sanshiro-black-webfont.c1f68853528f93d9d3b3.woff",
     "static/media/sanshiro-black-webfont.woff2": "/static/media/sanshiro-black-webfont.1a151d11b40fc569a021.woff2",
     "index.html": "/index.html",
-    "main.11fad031.css.map": "/static/css/main.11fad031.css.map",
-    "main.52a1d443.js.map": "/static/js/main.52a1d443.js.map"
+    "main.a5149b79.css.map": "/static/css/main.a5149b79.css.map",
+    "main.81f0bbf3.js.map": "/static/js/main.81f0bbf3.js.map"
   },
   "entrypoints": [
-    "static/css/main.11fad031.css",
-    "static/js/main.52a1d443.js"
+    "static/css/main.a5149b79.css",
+    "static/js/main.81f0bbf3.js"
   ]
 }
