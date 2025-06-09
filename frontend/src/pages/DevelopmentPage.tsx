@@ -712,6 +712,7 @@ const DevelopmentPage = () => {
                     flexWrap: "wrap",
                   }}
                 >
+                  <Technology name="Firebase" />
                   <Technology name="React" />
                   <Technology name="Django" />
                   <Technology name="Google Cloud Platform" />
