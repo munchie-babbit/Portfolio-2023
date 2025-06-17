@@ -717,7 +717,7 @@ const DevelopmentPage = () => {
                   <Technology name="React" />
                   <Technology name="Django" />
                   <Technology name="Google Cloud Platform" />
-                  <Technology name="Git Version Control" />
+                  <Technology name="Git" />
                   <Technology name="CI/CD Practices" />
                   <Technology name="API Design" />
                   <Technology name="Unity 3D & Blender" />
