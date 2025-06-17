@@ -714,6 +714,7 @@ const DevelopmentPage = () => {
                 >
                   <Technology name="Firebase" />
                   <Technology name="Supabase" />
+                  <Technology name="MongoDB" />
                   <Technology name="React" />
                   <Technology name="Django" />
                   <Technology name="Google Cloud Platform" />
