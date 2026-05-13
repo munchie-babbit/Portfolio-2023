@@ -279,17 +279,37 @@ const DevelopmentPage = () => {
                     Shopify
                   </Link>
                   , I’m a problem solver who is enthusiastic about human-centric
-                  design and usability. Currently I’m working at{" "}
+                  design and usability. I used to work at{" "}
                   <Link
-                    href=""
+                    href="https://citylitics.com"
                     target="_blank"
+                    rel="noopener noreferrer"
                     color={colors.midBlue}
                     sx={{ fontWeight: "bold" }}
                   >
                     Citylitics
+                  </Link>{" "}
+                  and{" "}
+                  <Link
+                    href="https://flair.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    color={colors.midBlue}
+                    sx={{ fontWeight: "bold" }}
+                  >
+                    Flair AI
                   </Link>
-                  , focused on improving city infrastructure and the daily lives
-                  for individuals throughout North America.
+                  . Right now, working on my own company,{" "}
+                  <Link
+                    href="https://monarchpark.ca"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    color={colors.midBlue}
+                    sx={{ fontWeight: "bold" }}
+                  >
+                    monarchpark.ca
+                  </Link>
+                  .
                 </p>
               </Box>
             </Grid>
